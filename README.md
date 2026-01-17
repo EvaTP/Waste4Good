@@ -57,7 +57,7 @@ Pouvoir se connecter à l’application avec un login et password fourni par l�
 
 - NIVEAU 1 : tous les bénévoles ont le même identifiant et mot de passe
 - NIVEAU 2 : chaque bénévole a ses propres identifiants
-  💙 [BONUS] : Pouvoir éditer son profil
+- 💙 [BONUS] : Pouvoir éditer son profil
 - Modifier ses identifiants
 - Modifier son mot de passe
 
@@ -91,15 +91,14 @@ Développer une vue qui permet à l’association de suivre les statistiques des
 
 ### 💙 Les BONUS 💪
 
-# 💙 [BONUS] Gamification : dépense des points collectés
+# 💙 [BONUS+] Gamification : dépense des points collectés
 
-Pour encourager les bénévoles dans leurs actions, l’association a décidé de mettre en place un système de points qui, au cumulé, permet de débloquer des dons qu’iels peuvent faire auprès d’associations.
+Pour encourager les bénévoles dans leurs actions, l’association a décidé de mettre en place un système de points qui, au cumulé, permet de débloquer des dons qu’ils peuvent faire auprès d’associations.
 
-Chaque bénévole cumule des points par rapport à ses collectes
-ces points peuvent être transformés en dons pour des associations
+Chaque bénévole cumule des points à chaque collecte. Ces points peuvent être transformés en dons pour les associations de leur choix.
 
 ## Ressources
 
-# Visuels : Canva
-
-# Icones : LUCIDE : https://lucide.dev/icons/
+Visuels : Canva
+Photos : Freepik
+Icones : Lucide : https://lucide.dev/icons/
