@@ -41,7 +41,7 @@ L’objectif est de développer une application avec :
 ✅ Savoir utiliser des states
 [ ] BONUS : Savoir utiliser des hooks 🪝
 
-# 💙 BONUS+
+## 💙 BONUS
 
 ✅ (Niveau 1+) Déployer son back-end en production avec Vercel (solution gratuite)
 [ ] (Niveau 1+) Développer l’authentification
@@ -51,7 +51,7 @@ L’objectif est de développer une application avec :
 
 ### VUES FRONT-END
 
-# 🌱 1. Vue BENEVOLE : Gestion de compte et connexion
+## 🌱 1. Vue BENEVOLE : Gestion de compte et connexion
 
 Pouvoir se connecter à l’application avec un login et password fourni par l’association
 
@@ -61,7 +61,7 @@ Pouvoir se connecter à l’application avec un login et password fourni par l�
 - Modifier ses identifiants
 - Modifier son mot de passe
 
-# 🌱 2. Vue BENEVOLE : Gestion des collectes de déchets
+## 🌱 2. Vue BENEVOLE : Gestion des collectes de déchets
 
 Pouvoir enregistrer une collecte (bénévole responsable, date, lieu)
 
@@ -70,7 +70,7 @@ Pouvoir enregistrer une collecte (bénévole responsable, date, lieu)
 - Pour éviter tout problème de saisie, la localisation sera une liste déroulante - La liste des villes sera stockée en base. On créera une route en back-end pour les récupérer.
 - Un enregistrement correspond à l’association des informations suivantes : - Bénévole - Date - Lieu - Déchets collectés - Quantité
 
-# ⚙️ 3. Vue ASSOCIATION : Gestion des bénévoles
+## ⚙️ 3. Vue ASSOCIATION : Gestion des bénévoles
 
 ✅ Développer une page qui permet de lister tous les bénévoles
 Il sera possible de :
@@ -82,16 +82,14 @@ Il sera possible de :
   ✅ - Pouvoir modifier un compte bénévole
   ✅ - Pouvoir supprimer un compte bénévole
 
-# ⚙️ 4. Vue ASSOCIATION : Tableau de bord
+## ⚙️ 4. Vue ASSOCIATION : Tableau de bord
 
 Développer une vue qui permet à l’association de suivre les statistiques des collectes
 ✅ - Voir le total de déchets collectés
 ❌ - Filtrer par date (mois, année)
 ✅ - Filtrer par lieu (ville ou région)
 
-### 💙 Les BONUS 💪
-
-# 💙 [BONUS+] Gamification : dépense des points collectés
+## 💙 [BONUS+] Gamification : dépense des points collectés
 
 Pour encourager les bénévoles dans leurs actions, l’association a décidé de mettre en place un système de points qui, au cumulé, permet de débloquer des dons qu’ils peuvent faire auprès d’associations.
 
@@ -99,6 +97,6 @@ Chaque bénévole cumule des points à chaque collecte. Ces points peuvent être
 
 ## Ressources
 
-Visuels : Canva
-Photos : Freepik
+Visuels : Canva /
+Photos : Freepik /
 Icones : Lucide : https://lucide.dev/icons/
