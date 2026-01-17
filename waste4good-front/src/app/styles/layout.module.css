@@ -2,36 +2,38 @@
 is a CSS Module specifically designed to contain the styles for a global layout structure and reusable UI components that appear across multiple pages.
 Unlike in globals.css, the classes defined in layout.module.css are locally scoped to prevent naming conflicts, as Next.js automatically generates unique class names during compilation. */
 
-
 /* Header */
-.header {
-  background-color: #059669;
-  color: white;
-  padding: 1rem;
+/* .header {
+  /* background-color: #059669; ancienne couleur adaction */
+/* background-color: #9bc83a; */
+/* color: white;
+  padding: 1.5rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 .header_content {
   display: flex;
-  flex-direction : row;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 }
 .header_title {
   display: flex;
-  flex-direction : row;
+  flex-direction: row;
   font-size: 1.75rem;
   font-weight: 700;
   gap: 0.5rem;
 }
 .header_subtitle {
-  text-align: center;
-  color: #a7f3d0;
-  font-size: 1rem;
-  margin-top: 0.25rem;
-}
+  text-align: center; */
+/* color: #9bc83a; */
+/* color: #a7f3d0; /* ancienne couleur adaction */
+/* font-size: 1rem;
+  margin-top: 0.25rem;  
+} */
+
 /* Footer */
-.info_text{
+.info_text {
   font-size: 1.25rem;
   margin: 1em;
 }
@@ -86,7 +88,7 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
 .success_message {
   background-color: #10b981;
   border-radius: 5px;
-  font-size : 2em;
+  font-size: 2em;
   color: white;
   padding: 0.75rem;
   text-align: center;
@@ -97,7 +99,6 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
   display: inline;
   margin-right: 0.5rem;
 }
-
 
 /* Waste type buttons */
 .waste_types_grid {
@@ -143,7 +144,6 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
   background-color: #ecfdf5;
 }
 
-
 /* Textarea */
 .textarea {
   width: 100%;
@@ -178,8 +178,8 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
   font-weight: 500;
   transition: background-color 0.2s;
 }
-.cancel_btn{
-   width: 100%;
+.cancel_btn {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,7 +214,6 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
 .manage_btn:hover:not(:disabled) {
   background-color: #4b5563;
 }
-
 
 /* Reports list */
 .reports_list {
@@ -280,22 +279,24 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
   }
 }
 
-/* Navbar */
-.navbar {
+/* NavBar */
+.NavBar {
   background-color: white;
   border-bottom: 1px solid var(--border-color);
   padding: 0.2rem 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-.navbar_container {
-  max-width: 1024px;
+.NavBar_container {
+  max-width: 100%;
   margin: 0 auto;
+  padding: 0 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 2rem;
 }
 
-.navbar_link {
+.NavBar_link {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -306,34 +307,15 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
   transition: all 0.2s;
 }
 
-.navbar_link:hover,
-.navbar_link.active {
+.NavBar_link:hover,
+.NavBar_link.active {
   color: var(--primary-color);
   background-color: #ecfdf5;
 }
 
-.navbar_link.active {
+.NavBar_link.active {
   font-weight: 500;
 }
-
-/* Responsive navbar */
-@media (max-width: 640px) {
-  .navbar_container {
-    gap: 1.5rem;
-  }
-
-  .navbar_link {
-    flex-direction: column;
-    padding: 0.5rem;
-    gap: 0.25rem;
-  }
-
-  .navbar_link span {
-    font-size: 0.75rem;
-  }
-}
-
-
 
 /* Donate page styles */
 .points_display {
@@ -358,7 +340,9 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
   border: 1px solid #e5e7eb;
   border-radius: 0.75rem;
   padding: 1rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .association_card:hover {
@@ -475,3 +459,80 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
   flex: 1;
 }
 
+/* Navbar générale */
+.NavBar {
+  width: 100%;
+  height: 80px; /* hauteur de la navbar */
+  background-color: #9bc83a; /* vert anis */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container : sépare gauche / droite */
+.NavBar_container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: flex;
+  justify-content: space-between; /* LEFT vs RIGHT */
+  align-items: center;
+}
+
+/* Bloc gauche : logo + titre */
+.NavBar_left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.NavBar_title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1d6ea6;
+}
+
+/* Bloc droit : liens */
+.NavBar_right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* Liens de la navbar */
+.NavBar_link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #1f2d16;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.NavBar_link:hover {
+  opacity: 0.8;
+}
+
+/* Responsive : mobile */
+@media (max-width: 640px) {
+  .NavBar_container {
+    padding: 0 16px;
+  }
+
+  .NavBar_right {
+    gap: 12px;
+  }
+
+  .NavBar_link {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .NavBar_title {
+    font-size: 1.2rem;
+  }
+}

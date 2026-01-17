@@ -123,7 +123,7 @@ export default function VolunteersMgt() {
       setSuccessMessage(
         isEditing
           ? "✅ Bénévole modifié avec succès."
-          : "✅ Bénévole ajouté avec succès."
+          : "✅ Bénévole ajouté avec succès.",
       );
 
       // Re-fetch des bénévoles pour mettre à jour la liste
@@ -148,7 +148,7 @@ export default function VolunteersMgt() {
   // SUPPRIMER
   const handleDelete = async (volunteer) => {
     const confirmDelete = confirm(
-      `Supprimer ${volunteer.firstname} ${volunteer.lastname} ?`
+      `Supprimer ${volunteer.firstname} ${volunteer.lastname} ?`,
     );
     if (!confirmDelete) return;
 
@@ -157,7 +157,7 @@ export default function VolunteersMgt() {
         `http://localhost:3001/volunteers/${volunteer.id}`,
         {
           method: "DELETE",
-        }
+        },
       );
 
       if (!res.ok) throw new Error("Erreur serveur");
@@ -182,7 +182,7 @@ export default function VolunteersMgt() {
               height={30}
               priority
             />
-            Adaction
+            Waste4Good
           </p>
         </div>
         <p className={layoutStyles.header_subtitle}>
@@ -191,9 +191,9 @@ export default function VolunteersMgt() {
       </header>
 
       <div>
-        <nav className={layoutStyles.navbar}>
-          <div className={layoutStyles.navbar_container}>
-            <Link href="/manage-users" className={layoutStyles.navbar_link}>
+        <nav className={layoutStyles.NavBar}>
+          <div className={layoutStyles.NavBar_container}>
+            <Link href="/manage-users" className={layoutStyles.NavBar_link}>
               <Image
                 src="/sprout.svg"
                 alt="icon-leaf"
@@ -203,7 +203,7 @@ export default function VolunteersMgt() {
               />
               <span>Gestion des bénévoles</span>
             </Link>
-            <Link href="/leaderboard" className={layoutStyles.navbar_link}>
+            <Link href="/leaderboard" className={layoutStyles.NavBar_link}>
               <Image
                 src="/trophy.svg"
                 alt="icon-trophy"

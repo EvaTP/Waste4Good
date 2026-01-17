@@ -2,10 +2,10 @@
 
 "use client";
 import Image from "next/image";
-import Link from 'next/link';
+import Link from "next/link";
 import styles from "./page.module.css";
 import layoutStyles from "../styles/layout.module.css";
-import ItemNavbar from "../general-components/itemNavbar";
+import NavBar from "../general-components/NavBar";
 import { useState, useEffect } from "react";
 
 export default function DonatePage() {
@@ -24,7 +24,9 @@ export default function DonatePage() {
         setAssociations(data);
       } catch (e) {
         console.error("Failed to fetch associations:", e);
-        setError("Impossible de charger les associations. Veuillez réessayer plus tard.");
+        setError(
+          "Impossible de charger les associations. Veuillez réessayer plus tard.",
+        );
       } finally {
         setLoading(false); // Arrête le chargement, que ce soit un succès ou une erreur
       }
@@ -35,8 +37,10 @@ export default function DonatePage() {
 
   if (loading) {
     return (
-      <div className={layoutStyles.container}> {/* Utilisez un style de layout si disponible */}
-        <ItemNavbar /> {/* Votre barre de navigation */}
+      <div className={layoutStyles.container}>
+        {" "}
+        {/* Utilisez un style de layout si disponible */}
+        <NavBar />
         <h1 className={styles.title}>Chargement des associations...</h1>
         <p>Merci de patienter.</p>
       </div>
@@ -46,7 +50,7 @@ export default function DonatePage() {
   if (error) {
     return (
       <div className={layoutStyles.container}>
-        <ItemNavbar />
+        <NavBar />
         <h1 className={styles.title}>Erreur</h1>
         <p className={styles.errorMessage}>{error}</p>
       </div>
@@ -54,45 +58,51 @@ export default function DonatePage() {
   }
 
   return (
-
-    
-    <div className={layoutStyles.container}> {/* Ou un div simple si layoutStyles.container n'est pas nécessaire */}
-      <ItemNavbar /> 
-    <div className={styles.global}>
-      <h6 className={styles.pageTitle}>Faire un Don</h6> {/* Appliquez vos styles ici */}
-      
-      {/* Grid pour les cartes d'associations */}
-      <div className={styles.associationsGrid}>
-        {associations.length > 0 ? (
-          associations.map((association) => (
-            <div key={association.id} className={styles.associationCard}>
-              {/* Vérifiez si votre objet association a une propriété imageUrl */}
-              {association.imageUrl && (
-                <Image
-                  src={association.imageUrl}
-                  alt={association.name}
-                  width={300} // Adaptez la largeur et la hauteur
-                  height={200} // en fonction de votre design
-                  className={styles.associationImage}
-                />
-              )}
-              <h2 className={styles.associationName}>{association.name}</h2>
-              <p className={styles.associationDescription}>{association.description}</p>
-              {/* Vous pouvez ajouter un lien vers une page de don spécifique pour l'association */}
-              <Link href={`/donate/${association.id}`} className={styles.donateButton}>
-                Faire un don
-              </Link>
-            </div>
-          ))
-        ) : (
-          <p>Aucune association disponible pour le moment.</p>
-        )}
+    <div className={layoutStyles.container}>
+      {" "}
+      {/* Ou un div simple si layoutStyles.container n'est pas nécessaire */}
+      <NavBar />
+      <div className={styles.global}>
+        <h6 className={styles.pageTitle}>Faire un Don</h6>{" "}
+        {/* Appliquez vos styles ici */}
+        {/* Grid pour les cartes d'associations */}
+        <div className={styles.associationsGrid}>
+          {associations.length > 0 ? (
+            associations.map((association) => (
+              <div key={association.id} className={styles.associationCard}>
+                {/* Vérifiez si votre objet association a une propriété imageUrl */}
+                {association.imageUrl && (
+                  <Image
+                    src={association.imageUrl}
+                    alt={association.name}
+                    width={300} // Adaptez la largeur et la hauteur
+                    height={200} // en fonction de votre design
+                    className={styles.associationImage}
+                  />
+                )}
+                <h2 className={styles.associationName}>{association.name}</h2>
+                <p className={styles.associationDescription}>
+                  {association.description}
+                </p>
+                {/* Vous pouvez ajouter un lien vers une page de don spécifique pour l'association */}
+                <Link
+                  href={`/donate/${association.id}`}
+                  className={styles.donateButton}
+                >
+                  Faire un don
+                </Link>
+              </div>
+            ))
+          ) : (
+            <p>Aucune association disponible pour le moment.</p>
+          )}
+        </div>
       </div>
-      </div>
-       <footer>
-        <p className={layoutStyles.info_text}>🌱  Merci d'agir pour la planète. Vous faites partie du changement.</p>
+      <footer>
+        <p className={layoutStyles.info_text}>
+          🌱 Merci d'agir pour la planète. Vous faites partie du changement.
+        </p>
       </footer>
     </div>
   );
 }
-

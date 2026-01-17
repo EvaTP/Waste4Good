@@ -21,20 +21,20 @@ export default function VolunteersLeaderboard() {
   //     });
   // }, []);
 
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const res = await fetch("http://localhost:3001/leaderboard");
-      const data = await res.json();
-      setData(data);
-    } catch (error) {
-      console.error("Erreur lors du fetch :", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-  fetchData();
-}, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("http://localhost:3001/leaderboard");
+        const data = await res.json();
+        setData(data);
+      } catch (error) {
+        console.error("Erreur lors du fetch :", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
   if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>No profile data</p>;
@@ -60,9 +60,9 @@ useEffect(() => {
       </header>
 
       <div>
-        <nav className={layoutStyles.navbar}>
-          <div className={layoutStyles.navbar_container}>
-            <Link href="/manage-users" className={layoutStyles.navbar_link}>
+        <nav className={layoutStyles.NavBar}>
+          <div className={layoutStyles.NavBar_container}>
+            <Link href="/manage-users" className={layoutStyles.NavBar_link}>
               <Image
                 src="/sprout.svg"
                 alt="icon-leaf"
@@ -72,7 +72,7 @@ useEffect(() => {
               />
               <span>Gestion des bénévoles</span>
             </Link>
-            <Link href="/leaderboard" className={layoutStyles.navbar_link}>
+            <Link href="/leaderboard" className={layoutStyles.NavBar_link}>
               <Image
                 src="/trophy.svg"
                 alt="icon-trophy"
