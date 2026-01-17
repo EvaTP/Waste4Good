@@ -1,23 +1,30 @@
 ![Badge pour Git](W4G-badge.svg)
 
-### CONTEXTE PROJET WASTE4GOOD 💚
+### CONTEXTE PROJET WASTE4GOOD
+
+### 🚧 Ce projet est en cours de réalisation. Il a été repris de l'ancien projet Adaction.
 
 WASTE4GOOD est une association qui sensibilise aux ramassages des déchets sauvages (mégots de cigarette, plastiques d’emballages, etc).
 L’objectif est de développer une application avec :
 
-# une vue association
+une vue association
 
 - qui permet de créer les comptes des bénévoles
 - qui permet de suivre les statistiques globales des collectes
 
-# une vue bénévole
+une vue bénévole
 
 - qui permet d’enregistrer les collectes selon les lieux de collecte et le type de collecte
 - qui permet de dépenser ses points récoltés grâce aux collectes
 
 # 🎯 Objectifs
 
-✅ fait ❌ pas fait 💙 BONUS
+✅ fait 🚧 en cours ❌ pas fait 💙 BONUS
+
+## STACK
+
+- Frontend : JS / React / Next.js / TailwindCss
+- Backend : Express / BD : Neon / PostgreSQL
 
 ## Fonctionnalités BACK-END
 
@@ -33,27 +40,25 @@ L’objectif est de développer une application avec :
 
 ## Fonctionnalités FRONT-END
 
-[ ] Développer en mobile-first
 ✅ Mettre en place un site interactif
 ✅ Savoir GET/ POST / PUT ou PATCH / DELETE des données
 ✅ Adopter un framework [NEXT.JS, EXPRES.JS]
 ✅ Savoir utiliser un gestionnaire de paquets
 ✅ Savoir créer des composants
 ✅ Savoir utiliser des props
-✅ Savoir utiliser des states
-[ ] BONUS : Savoir utiliser des hooks 🪝
+✅ BONUS : Savoir utiliser des hooks 🪝
 
 ## 💙 BONUS
 
-✅ (Niveau 1+) Déployer son back-end en production avec Vercel (solution gratuite)
-[ ] (Niveau 1+) Développer l’authentification
-[ ] (Niveau 2) Mettre en place un middleware
-[ ] (Niveau 1) Intégrer des règles d’accessibilité et d’éco-conception
-[ ] (Niveau 1) Utiliser un framework CSS tel que Tailwind
+- ✅ (Niveau 1+) Déployer son back-end en production avec Vercel
+- 🚧 (Niveau 1+) Développer l’authentification
+- 🚧 (Niveau 2) Mettre en place un middleware
+- 🚧 (Niveau 1) Intégrer des règles d’accessibilité et d’éco-conception
+- (Niveau 1) Utiliser un framework CSS tel que Tailwind
 
 ### VUES FRONT-END
 
-## 🌱 1. Vue BENEVOLE : Gestion de compte et connexion
+## 🌱 1. Vue BENEVOLE : Gestion de compte et connexion 🚧
 
 Pouvoir se connecter à l’application avec un login et password fourni par l’association
 
