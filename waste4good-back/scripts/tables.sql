@@ -58,7 +58,7 @@ CREATE TABLE associations (
     "points_conversion_euro" INTEGER NOT NULL
 );
 
-
+-- ici on met des FK vers volunteers et associations dans cette table d'assoc
 CREATE TABLE donations (
     "id" SERIAL PRIMARY KEY,
     "association_id" INTEGER NOT NULL, -- Foreign Key

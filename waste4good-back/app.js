@@ -21,11 +21,13 @@ const wastesRoutes = require("./routes/wastes");
 const collectionsRoutes = require("./routes/collections");
 const leaderboardRoutes = require("./routes/leaderboard");
 const connexionRoute = require("./routes/connexion");
+const is_collectedRoute = require("./routes/is_collected");
+const donationsRoute = require("./routes/donations");
 const dashboardRoute = require("./routes/dashboard");
 
 console.log("2");
 app.use((req, res, next) => {
-  console.log(`Requête reçue : ${req.method}q ${req.url}`);
+  console.log(`Requête reçue : ${req.method} ${req.url}`);
   next();
 });
 
@@ -37,7 +39,9 @@ app.use("/wastes", wastesRoutes);
 app.use("/collections", collectionsRoutes);
 app.use("/leaderboard", leaderboardRoutes);
 app.use("/", connexionRoute);
-app.use ("/dashboard", dashboardRoute);
+app.use("/is_collected", is_collectedRoute);
+app.use("/donations", donationsRoute);
+app.use("/dashboard", dashboardRoute);
 
 // pour lancer le serveur
 app.listen(port_backend, () => {
