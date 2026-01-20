@@ -23,8 +23,8 @@ une vue bénévole
 
 ## STACK
 
-- Frontend : JS / React / Next.js / TailwindCss
-- Backend : Express / BD : Neon / PostgreSQL
+- Frontend : JS / React / Next.js / TailwindCss / Vercel
+- Backend : Express / BD : Neon / PostgreSQL / Vercel
 
 ## Fonctionnalités BACK-END
 
@@ -45,8 +45,7 @@ une vue bénévole
 ✅ Adopter un framework [NEXT.JS, EXPRES.JS]
 ✅ Savoir utiliser un gestionnaire de paquets
 ✅ Savoir créer des composants
-✅ Savoir utiliser des props
-✅ BONUS : Savoir utiliser des hooks 🪝
+✅ Savoir utiliser des props et des hooks
 
 ## 💙 BONUS
 
@@ -54,7 +53,7 @@ une vue bénévole
 - 🚧 (Niveau 1+) Développer l’authentification
 - 🚧 (Niveau 2) Mettre en place un middleware
 - 🚧 (Niveau 1) Intégrer des règles d’accessibilité et d’éco-conception
-- (Niveau 1) Utiliser un framework CSS tel que Tailwind
+- ✅ (Niveau 1) Utiliser un framework CSS tel que Tailwind
 
 ### VUES FRONT-END
 
