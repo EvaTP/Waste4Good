@@ -12,11 +12,21 @@ export default function NavBar() {
           <Image
             src="/logo-W4G.png"
             alt="logo-waste4good"
-            width={55}
-            height={50}
+            width={75}
+            height={70}
             priority
           />
-          <span className={layoutStyles.NavBar_title}>Waste4Good</span>
+          <Image
+            src="/title-W4G.png"
+            alt="title-waste4good"
+            width={105}
+            height={100}
+            priority
+          />
+          {/* <span className={layoutStyles.NavBar_title}>Waste4Good</span> */}
+          <p className=" text-white text-2xl mt-6">
+            Transformer les déchets en impact positif
+          </p>
         </div>
 
         {/* RIGHT: liens */}

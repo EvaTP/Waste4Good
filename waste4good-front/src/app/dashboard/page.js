@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
 import layoutStyles from "../styles/layout.module.css";
-import NavBar from "../general-components/NavBar";
 import { useState, useEffect } from "react";
 
 //URL API Express = "http://localhost:3001/volunteers";
@@ -40,8 +39,6 @@ export default function Dashboard() {
 
   return (
     <div className="app_container">
-      <NavBar />
-
       <div className={layoutStyles.main_content}>
         <div className={layoutStyles.card}>
           <div className={styles.dashboard_header}>
@@ -148,12 +145,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-
-      <footer>
-        <p className={layoutStyles.info_text}>
-          🌱 Merci d'agir pour la planète. Vous faites partie du changement.
-        </p>
-      </footer>
     </div>
   );
 }

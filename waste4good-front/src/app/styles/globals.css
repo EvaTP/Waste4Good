@@ -21,7 +21,6 @@
   }
 } */
 
-
 /* GENERAL LAYOUT */
 /* ************** */
 body {
@@ -37,19 +36,19 @@ footer {
   font-size: 0.8rem;
   text-align: center;
   padding: 0.5rem;
+  background-color: yellowgreen;
 }
 /* footer p{
   font-size: 0.875rem;
   margin-top: 0.25rem;
 } */
 
-
 /* Input and Select styles */
-input[type='text'],
-input[type='date'],
-input[type='email'],
-input[type='password'],
-input[type='number'],
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
 select {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -76,7 +75,6 @@ select:disabled {
   cursor: not-allowed;
   opacity: 0.7;
 }
-
 
 /* Loading spinner */
 .spinner {
@@ -109,11 +107,3 @@ select:disabled {
     opacity: 0;
   }
 }
-
-
-
-
-
-
-
-

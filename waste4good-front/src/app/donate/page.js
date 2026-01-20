@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
 import layoutStyles from "../styles/layout.module.css";
-import NavBar from "../general-components/NavBar";
 import { useState, useEffect } from "react";
 
 export default function DonatePage() {
@@ -39,8 +38,6 @@ export default function DonatePage() {
     return (
       <div className={layoutStyles.container}>
         {" "}
-        {/* Utilisez un style de layout si disponible */}
-        <NavBar />
         <h1 className={styles.title}>Chargement des associations...</h1>
         <p>Merci de patienter.</p>
       </div>
