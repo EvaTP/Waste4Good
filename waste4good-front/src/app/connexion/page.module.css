@@ -32,7 +32,6 @@
 /* Base styles */
 .app_container {
   min-height: 100vh;
-  background-color: #f9fafb;
 }
 
 /* Main content */
@@ -129,8 +128,8 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 1rem; */
-  /* background-color: var(--primary-color); */
-  /* background-color: red;
+/* background-color: var(--primary-color); */
+/* background-color: red;
   color: white;
   border-radius: 0.5rem;
   border: none;
@@ -185,7 +184,7 @@
   .main_content {
     padding: 3rem 0.5rem 2rem;
   }
-  
+
   .card {
     padding: 2rem;
   }

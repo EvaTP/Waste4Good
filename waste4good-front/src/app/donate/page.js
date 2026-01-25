@@ -1,5 +1,3 @@
-// page web donate
-
 "use client";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +13,10 @@ export default function DonatePage() {
   useEffect(() => {
     async function fetchAssociations() {
       try {
-        const response = await fetch("http://localhost:3001/associations");
+        // const response = await fetch("http://localhost:3001/associations");
+        const response = await fetch(
+          "https://waste4good-back.vercel.app/associations",
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -47,7 +48,6 @@ export default function DonatePage() {
   if (error) {
     return (
       <div className={layoutStyles.container}>
-        <NavBar />
         <h1 className={styles.title}>Erreur</h1>
         <p className={styles.errorMessage}>{error}</p>
       </div>
@@ -55,13 +55,23 @@ export default function DonatePage() {
   }
 
   return (
-    <div className={layoutStyles.container}>
-      {" "}
-      {/* Ou un div simple si layoutStyles.container n'est pas nécessaire */}
-      <NavBar />
-      <div className={styles.global}>
+    <>
+      {/* Banner */}
+      <div className="relative w-full h-[350px]">
+        <Image
+          src="/images/banner-page-donate.png"
+          alt="Banner page donations associations"
+          fill
+          className="object-contain"
+          priority
+        />
+      </div>
+
+      <div className={layoutStyles.container}>
         <h6 className={styles.pageTitle}>Faire un Don</h6>{" "}
-        {/* Appliquez vos styles ici */}
+        <h3 className="text-center text-4xl mb-8">
+          Faites un don à l'association de votre choix
+        </h3>
         {/* Grid pour les cartes d'associations */}
         <div className={styles.associationsGrid}>
           {associations.length > 0 ? (
@@ -94,12 +104,10 @@ export default function DonatePage() {
             <p>Aucune association disponible pour le moment.</p>
           )}
         </div>
+        <div className={layoutStyles.info_text}>
+          <p className={layoutStyles.info_text}>🙏 Merci pour vos dons.</p>
+        </div>
       </div>
-      <footer>
-        <p className={layoutStyles.info_text}>
-          🌱 Merci d'agir pour la planète. Vous faites partie du changement.
-        </p>
-      </footer>
-    </div>
+    </>
   );
 }

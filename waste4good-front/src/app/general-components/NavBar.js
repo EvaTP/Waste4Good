@@ -31,18 +31,43 @@ export default function NavBar() {
 
         {/* RIGHT: liens */}
         <nav className={layoutStyles.NavBar_right}>
+          <Link href="/connexion" className={layoutStyles.NavBar_link}>
+            <Image
+              src="/log-in-white.svg"
+              alt="icon-login"
+              width={20}
+              height={20}
+            />
+            <span>Connexion</span>
+          </Link>
+
           <Link href="/dashboard" className={layoutStyles.NavBar_link}>
-            <Image src="/sprout.svg" alt="icon-leaf" width={20} height={20} />
+            <Image
+              src="/sprout-white.svg"
+              alt="icon-leaf"
+              width={20}
+              height={20}
+            />
             <span>Dashboard</span>
           </Link>
 
           <Link href="/donate" className={layoutStyles.NavBar_link}>
-            <Image src="/heart.svg" alt="icon-heart" width={20} height={20} />
+            <Image
+              src="/heart-white.svg"
+              alt="icon-heart"
+              width={20}
+              height={20}
+            />
             <span>Dons</span>
           </Link>
 
           <Link href="/profil" className={layoutStyles.NavBar_link}>
-            <Image src="/user.svg" alt="icon-user" width={25} height={25} />
+            <Image
+              src="/user-white.svg"
+              alt="icon-user"
+              width={25}
+              height={25}
+            />
             <span>Mon profil</span>
           </Link>
         </nav>

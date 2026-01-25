@@ -10,20 +10,16 @@
 /* --- Media query pour les écrans de 600px et plus (MODIFIE les styles mobiles) --- */
 @media (min-width: 600px) {
   .global {
-    width: 30%; /* Pour les écrans de 600px et plus, utilise 90% de la largeur */
+    width: 90%; /* Pour les écrans de 600px et plus, utilise 90% de la largeur */
     max-width: 1200px; /* Ajoute une largeur maximale pour ne pas être trop large sur grand écran */
-    margin: 0 auto; /* Centre-le */
-    padding: 2rem; /* Plus de padding sur les grands écrans */
-    background-color: rgb(232, 236, 232); /* Exemple de couleur pour les grands écrans */
-    border-radius: 15px;
+    margin: 40px auto 0;
+    padding: 3rem; /* Plus de padding sur les grands écrans */
+    background-color: rgb(232, 236, 232);
+    border-radius: 10px;
     margin-top: 40px;
     padding-top: 10px;
+  }
 }
-}
-
-
-
-
 
 /* Styles pour le titre principal de la page */
 .pageTitle {
@@ -46,6 +42,7 @@
   max-width: 1200px; /* Largeur maximale de la grille */
   margin: 0 auto 80px auto; /* Centre la grille et ajoute de l'espace en dessous */
   padding: 0 20px; /* Padding sur les côtés pour les petits écrans */
+  background-color: tomato; /* Juste pour visualiser la grille */
 }
 
 /* Styles pour chaque carte d'association */
@@ -59,7 +56,9 @@
   flex-direction: column; /* Contenu empilé verticalement */
   justify-content: space-between; /* Pour pousser le bouton vers le bas */
   height: 100%; /* S'assure que toutes les cartes ont la même hauteur */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation au survol */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease; /* Animation au survol */
 }
 
 .associationCard:hover {
@@ -81,5 +80,5 @@
   font-size: 1.8rem;
   color: #090909; /* Couleur primaire (bleu, comme AdAction) */
   margin-bottom: 10px;
-  font-weight: 600
+  font-weight: 600;
 }

@@ -15,7 +15,9 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3001/volunteers");
+        const res = await fetch(
+          "https://waste4good-back.vercel.app/volunteers",
+        );
         const data = await res.json();
         setData(data);
       } catch (error) {
@@ -35,7 +37,12 @@ export default function Dashboard() {
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No profile data</p>;
+  if (!data)
+    return (
+      <p className="text-center text-2xl mt-4">
+        🔒 Page accessible après connexion
+      </p>
+    );
 
   return (
     <div className="app_container">
