@@ -28,24 +28,23 @@ une vue bénévole
 
 ## Fonctionnalités BACK-END
 
-✅ Développer un back-end
-✅ Mettre en place un CRUD
-✅ Mettre en place une base de données
-✅ Savoir concevoir le schéma d’une base de données relationnelles
-✅ Savoir écrire des requêtes SQL
-✅ Savoir utiliser un SGDBR
-[ ] Savoir chiffrer un mot de passe
-[ ] Comprendre la configuration de son app
-✅ L’utilité du package.json
+- ✅ Développer un back-end
+- ✅ Savoir utiliser un SGDBR
+- ✅ Mettre en place un CRUD
+- ✅ Mettre en place une base de données
+- ✅ Savoir concevoir le schéma d’une base de données relationnelles
+- ✅ Savoir écrire des requêtes SQL
+- 🚧 Savoir chiffrer un mot de passe
+- ✅ Comprendre la configuration de son app et l’utilité du package.json
 
 ## Fonctionnalités FRONT-END
 
-✅ Mettre en place un site interactif
-✅ Savoir GET/ POST / PUT ou PATCH / DELETE des données
-✅ Adopter un framework [NEXT.JS, EXPRES.JS]
-✅ Savoir utiliser un gestionnaire de paquets
-✅ Savoir créer des composants
-✅ Savoir utiliser des props et des hooks
+- ✅ Mettre en place un site interactif
+- ✅ Savoir GET/ POST / PUT ou PATCH / DELETE des données
+- ✅ Adopter un framework
+- ✅ Savoir utiliser un gestionnaire de paquets
+- ✅ Savoir créer des composants
+- ✅ Savoir utiliser des props et des hooks
 
 ## 💙 BONUS
 
@@ -78,22 +77,22 @@ Pouvoir enregistrer une collecte (bénévole responsable, date, lieu)
 
 ## ⚙️ 3. Vue ASSOCIATION : Gestion des bénévoles
 
-✅ Développer une page qui permet de lister tous les bénévoles
-Il sera possible de :
-✅ - Filtrer les bénévoles par localisation
+- ✅ Développer une page qui permet de lister tous les bénévoles
+- 🚧 Il sera possible de filtrer les bénévoles par localisation
 
 - 💙 [BONUS] : Retrouver un bénévole au travers d’une recherche par nom
   Développer les fonctionnalités suivante :
-  ✅ - Pouvoir ajouter un compte bénévole
-  ✅ - Pouvoir modifier un compte bénévole
-  ✅ - Pouvoir supprimer un compte bénévole
+  - ✅ Pouvoir ajouter un compte bénévole
+  - ✅ Pouvoir modifier un compte bénévole
+  - ✅ Pouvoir supprimer un compte bénévole
 
 ## ⚙️ 4. Vue ASSOCIATION : Tableau de bord
 
 Développer une vue qui permet à l’association de suivre les statistiques des collectes
-✅ - Voir le total de déchets collectés
-❌ - Filtrer par date (mois, année)
-✅ - Filtrer par lieu (ville ou région)
+
+- ✅ Voir le total de déchets collectés
+- ❌ Filtrer par date (mois, année)
+- ✅ Filtrer par lieu (ville ou région)
 
 ## 💙 [BONUS+] Gamification : dépense des points collectés
 

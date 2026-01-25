@@ -14,10 +14,13 @@ node_modules/
 !.yarn/releases
 !.yarn/versions
 
-# pages
+# pages & files
 page-old.js
 old-volunteers.js
 server-test.js
+sql_adaction.md
+volunteers.json
+waste_type.json
 
 # testing
 /coverage
