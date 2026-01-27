@@ -24,7 +24,7 @@ une vue bénévole
 ## STACK
 
 - Frontend : JS / React / Next.js / TailwindCss / Vercel
-- Backend : Express / BD : Neon / PostgreSQL / Vercel
+- Backend : Express, bcrypt / BD : Neon / PostgreSQL / Vercel
 
 ## Fonctionnalités BACK-END
 
@@ -34,7 +34,7 @@ une vue bénévole
 - ✅ Mettre en place une base de données
 - ✅ Savoir concevoir le schéma d’une base de données relationnelles
 - ✅ Savoir écrire des requêtes SQL
-- 🚧 Savoir chiffrer un mot de passe
+- ✅ Savoir chiffrer un mot de passe
 - ✅ Comprendre la configuration de son app et l’utilité du package.json
 
 ## Fonctionnalités FRONT-END
@@ -82,9 +82,8 @@ Pouvoir enregistrer une collecte (bénévole responsable, date, lieu)
 
 - 💙 [BONUS] : Retrouver un bénévole au travers d’une recherche par nom
   Développer les fonctionnalités suivante :
-  - ✅ Pouvoir ajouter un compte bénévole
-  - ✅ Pouvoir modifier un compte bénévole
-  - ✅ Pouvoir supprimer un compte bénévole
+  - ✅ Pouvoir ajouter / modifier / supprimer un compte bénévole
+  - 🚧 Pouvoir voir la localisation des bénévoles sur une carte
 
 ## ⚙️ 4. Vue ASSOCIATION : Tableau de bord
 
