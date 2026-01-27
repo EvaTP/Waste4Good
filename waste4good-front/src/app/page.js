@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       {/* Banner avec H1 + CTA superposés */}
-      <div className="relative w-full h-[400px]">
+      <div className="relative w-full h-100">
         <Image
           src="/images/banner-friends2.png"
           alt="Banner Waste4Good"
@@ -29,7 +29,7 @@ export default function Home() {
       </div>
 
       {/* Contenu de page */}
-      <main className="px-8 sm:px-20 py-12">
+      <main className="min-h-dvh px-8 sm:px-20 py-12">
         <h2 className="text-6xl font-bold text-center mt-8 mb-6">
           DÉCOUVREZ NOS ACTIONS
         </h2>

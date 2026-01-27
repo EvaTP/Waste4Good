@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
-import layoutStyles from "../styles/layout.module.css";
+// import layoutStyles from "../styles/layout.module.css";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
@@ -58,13 +58,13 @@ export default function LoginPage() {
     setSuccess("");
 
     try {
-      const res = await fetch("http://localhost:3001/connexion", {
+      const res = await fetch("https://waste4good-back.vercel.app/connexion", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          firstname: formData.firstName,
+          email: formData.email,
           password: formData.password,
         }),
       });
@@ -72,8 +72,8 @@ export default function LoginPage() {
       if (res.ok) {
         const userData = await res.json();
         setData(userData);
-        localStorage.setItem("firstName", userData.firstname);
-        setSuccess("Connexion réussie !");
+        localStorage.setItem("email", userData.email);
+        setSuccess("✔︎ Connexion réussie !");
 
         setTimeout(() => {
           router.push("/dashboard");
@@ -83,8 +83,8 @@ export default function LoginPage() {
         setError(errorData.message || "Identifiants invalides");
       }
     } catch (error) {
-      console.error("Erreur lors de la connexion :", error);
-      setError("Erreur de connexion au serveur");
+      console.error("✗ Erreur lors de la connexion :", error);
+      setError("✗ Erreur de connexion au serveur");
     } finally {
       setLoading(false);
     }
@@ -99,7 +99,7 @@ export default function LoginPage() {
 
   return (
     <div className={styles.app_container}>
-      <header className={styles.header}>
+      {/* <header className={styles.header}>
         <div className={styles.header_content}>
           <div className={styles.header_title}>
             <Image
@@ -112,7 +112,7 @@ export default function LoginPage() {
             Connexion
           </div>
         </div>
-      </header>
+      </header> */}
 
       <main className={styles.main_content}>
         <div className={styles.card}>
@@ -134,16 +134,16 @@ export default function LoginPage() {
           {/* Formulaire de connexion */}
           <form onSubmit={handleLogin} className={styles.form_container}>
             <div>
-              <label htmlFor="firstName" className={styles.form_label}>
-                Prénom *
+              <label htmlFor="email" className={styles.form_label}>
+                Email *
               </label>
               <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
                 onChange={handleInputChange}
-                placeholder="Votre prénom"
+                placeholder="Votre email"
                 className={styles.form_input}
                 required
               />
@@ -164,6 +164,9 @@ export default function LoginPage() {
                 required
               />
             </div>
+            <div>
+              <p className="font-style: italic">* champs obligatoires</p>
+            </div>
 
             <button
               type="submit"
@@ -172,7 +175,7 @@ export default function LoginPage() {
               disabled={isLoading}
             >
               <Image
-                src="/log-in.svg"
+                src="/log-in-white.svg"
                 alt="Connexion"
                 className={styles.logo}
                 width={20}
