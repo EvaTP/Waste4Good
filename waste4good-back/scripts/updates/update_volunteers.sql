@@ -1,4 +1,4 @@
-
+-- UPDATES FOR VOLUNTEERS TABLE
 -- add volunteers
 INSERT INTO volunteers (firstname, lastname, email, password, location)
 VALUES
@@ -23,7 +23,28 @@ VALUES
 ('Enzo',   'Michel',   'michel.enzo@example.fr',    'pass14', 9), -- Bordeaux
 ('Sarah',  'Lopez',    'lopez.sarah@example.fr',    'pass15', 10);-- Lille
 
+-- Ajouter la colonne role avec une valeur par défaut 'user'
+ALTER TABLE volunteers 
+ADD COLUMN role VARCHAR(20) DEFAULT 'user';
+
+-- Mettre à jour les rôles pour certains bénévoles
+UPDATE volunteers 
+SET role = 'admin' 
+WHERE id IN (1);
+
+-- Ajouter une admin supplémentaire
+INSERT INTO volunteers (firstname, lastname, email, password, location, role)
+VALUES ('Eva', 'Lopez', 'lopez.eva@example.fr', 'pass890', 1, 'admin'); -- Paris
+
 -- Les champs created_at et updated_at ne sont pas renseignés car ils ont déjà DEFAULT NOW().
+
+-- modifier le champ email pour qu'il soit unique pour éviter les doublons (authentification)
+ALTER TABLE volunteers
+ADD UNIQUE (email);
+
+
+
+
 
 
 -- EXEMPLE read volunteers
