@@ -21,6 +21,10 @@ server-test.js
 sql_adaction.md
 volunteers.json
 waste_type.json
+update_volunteers.sql
+/old
+hash-passwords.js
+
 
 # testing
 /coverage
