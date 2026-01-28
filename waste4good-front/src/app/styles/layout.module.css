@@ -490,7 +490,7 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
 /* Responsive design */
 @media (min-width: 768px) {
   .main_content {
-    max-width: 28rem;
+    max-width: 60rem;
     margin: 0 auto;
   }
 

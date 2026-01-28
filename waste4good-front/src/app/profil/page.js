@@ -57,7 +57,7 @@ export default function Profil() {
 
     try {
       const response = await fetch(
-        `http://localhost:3001/volunteers/${volunteerId}`,
+        `https://waste4good-back.vercel.app/connexion/volunteers/${volunteerId}`,
         {
           method: "PATCH",
           headers: {

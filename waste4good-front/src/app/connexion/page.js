@@ -76,7 +76,8 @@ export default function LoginPage() {
         localStorage.setItem("token", userData.token);
         localStorage.setItem("userId", userData.user.id);
         localStorage.setItem("userRole", userData.user.role);
-        // username pas indispensable mais servira à afficher un message de bienvenue personnalisé
+        // firstname et username pas indispensables mais servent à afficher un message de bienvenue personnalisé
+        localStorage.setItem("firstName", userData.user.firstname);
         localStorage.setItem(
           "userName",
           `${userData.user.firstname} ${userData.user.lastname}`,
