@@ -9,20 +9,26 @@ export default function NavBar() {
       <div className={layoutStyles.NavBar_container}>
         {/* LEFT: logo + titre */}
         <div className={layoutStyles.NavBar_left}>
-          <Image
-            src="/logo-W4G.png"
-            alt="logo-waste4good"
-            width={75}
-            height={70}
-            priority
-          />
-          <Image
-            src="/title-W4G.png"
-            alt="title-waste4good"
-            width={105}
-            height={100}
-            priority
-          />
+          <Link href="/">
+            <Image
+              src="/logo-W4G.png"
+              alt="logo-waste4good"
+              width={75}
+              height={70}
+              priority
+            />
+          </Link>
+
+          <Link href="/">
+            <Image
+              src="/title-W4G.png"
+              alt="title-waste4good"
+              width={105}
+              height={100}
+              priority
+            />
+          </Link>
+
           {/* <span className={layoutStyles.NavBar_title}>Waste4Good</span> */}
           <p className=" text-white text-2xl mt-6">
             Transformer les déchets en impact positif

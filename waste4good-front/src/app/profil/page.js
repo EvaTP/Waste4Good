@@ -161,9 +161,7 @@ export default function Profil() {
       </div>
 
       <footer>
-        <p className={layoutStyles.info_text}>
-          🌱 Merci d'agir pour la planète. Vous faites partie du changement.
-        </p>
+        <p className={layoutStyles.info_text}>🌱</p>
       </footer>
     </div>
   );

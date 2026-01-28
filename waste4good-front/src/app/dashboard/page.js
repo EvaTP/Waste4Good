@@ -64,6 +64,7 @@ export default function Dashboard() {
 
   // retrouver la quantité de déchets collectés par type
   const getQuantityByType = (type) => {
+    if (!Array.isArray(collectionsData)) return 0; // sécurité
     const item = collectionsData.find((entry) => entry.type === type);
     return item ? item.total_quantity : 0;
   };

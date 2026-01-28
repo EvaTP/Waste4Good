@@ -34,22 +34,20 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
 
 /* Footer */
 .Footer_container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #067857;
-  text-align: center;
+  /* background-color: #067857; */
+  color: white;
+  background-color: #022e03;
+  text-align: left;
   padding: 1rem;
   margin-top: 2rem;
 }
 
 .info_text {
   font-size: 1.5rem;
-  margin: 0.5em 0.5em 0.5em 2em;
+  margin: 0.5em;
   padding: 0.5em;
   text-align: center;
   color: #ffff;
-  /* color: #333333; */
 }
 
 /* Base styles */

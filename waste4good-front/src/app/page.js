@@ -33,6 +33,49 @@ export default function Home() {
         <h2 className="text-6xl font-bold text-center mt-8 mb-6">
           DÉCOUVREZ NOS ACTIONS
         </h2>
+
+        <div>
+          <p className="text-xl text-center max-w-4xl mx-auto">
+            Waste4Good est une plateforme dédiée à la collecte de déchets dans
+            les espaces publics. Notre mission est de mobiliser les citoyens
+            pour un environnement plus propre et plus sain. Rejoignez-nous dans
+            cette aventure écologique et contribuez à faire une différence
+            tangible dans votre communauté !
+          </p>
+        </div>
+
+        <div className="mt-30 mb-20 flex justify-center bg-emerald-100">
+          <p className="text-2xl text-center max-w-4xl mx-auto">
+            Les déchets en chiffres
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 mt-8">
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              <h3 className="text-lg font-semibold">Déchets collectés</h3>
+              <p className="text-xl">120 kg</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              <h3 className="text-lg font-semibold">Points gagnés</h3>
+              <p className="text-xl">500 pts</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              <h3 className="text-lg font-semibold">Associations aidées</h3>
+              <p className="text-xl">15</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              <h3 className="text-lg font-semibold">Bénévoles mobilisés</h3>
+              <p className="text-xl">30</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              <h3 className="text-lg font-semibold">Événements réalisés</h3>
+              <p className="text-xl">10</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              <h3 className="text-lg font-semibold">Communautés impactées</h3>
+              <p className="text-xl">5</p>
+            </div>
+          </div>
+        </div>
       </main>
     </>
   );
