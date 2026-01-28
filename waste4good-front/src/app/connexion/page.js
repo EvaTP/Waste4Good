@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 export default function LoginPage() {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    firstName: "",
+    email: "",
     password: "",
   });
 
@@ -71,13 +71,22 @@ export default function LoginPage() {
 
       if (res.ok) {
         const userData = await res.json();
-        setData(userData);
-        localStorage.setItem("email", userData.email);
+
+        // Stocker le token et les infos essentielles
+        localStorage.setItem("token", userData.token);
+        localStorage.setItem("userId", userData.user.id);
+        localStorage.setItem("userRole", userData.user.role);
+        // username pas indispensable mais servira à afficher un message de bienvenue personnalisé
+        localStorage.setItem(
+          "userName",
+          `${userData.user.firstname} ${userData.user.lastname}`,
+        );
+
         setSuccess("✔︎ Connexion réussie !");
 
         setTimeout(() => {
           router.push("/dashboard");
-        }, 3000);
+        }, 1500);
       } else {
         const errorData = await res.json();
         setError(errorData.message || "Identifiants invalides");
