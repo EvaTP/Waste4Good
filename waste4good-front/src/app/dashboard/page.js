@@ -31,41 +31,51 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const storedName = localStorage.getItem("firstName");
-    if (storedName) {
-      setFirstName(storedName);
-    }
-  }, []);
-
+  // Récupérer le nom complet et le prénom
   useEffect(() => {
     const storedUserName = localStorage.getItem("userName");
     if (storedUserName) {
       setUserName(storedUserName);
+      setFirstName(storedUserName.split(" ")[0]);
     }
   }, []);
 
+  // Récupérer les données de collecte
   useEffect(() => {
     const fetchDashboardData = async () => {
-      const storedFirstName = localStorage.getItem("firstName");
-      if (!storedFirstName) return;
+      const userId = localStorage.getItem("userId");
+      if (!userId) return;
 
-      const response = await fetch(
-        `https://waste4good-back.vercel.app/dashboard/${storedFirstName}`,
-      );
-      const data = await response.json();
-
-      console.log("🦊 DASHBOARD DATA :", data);
-
-      setCollectionsData(data);
+      try {
+        const response = await fetch(
+          `https://waste4good-back.vercel.app/dashboard/${userId}`,
+        );
+        const data = await response.json();
+        console.log("🦊 DASHBOARD DATA :", data);
+        setCollectionsData(data);
+      } catch (error) {
+        console.error("Erreur fetch dashboard:", error);
+      }
     };
     fetchDashboardData();
   }, []);
 
   // retrouver la quantité de déchets collectés par type
   const getQuantityByType = (type) => {
-    if (!Array.isArray(collectionsData)) return 0; // sécurité
-    const item = collectionsData.find((entry) => entry.type === type);
+    if (!Array.isArray(collectionsData)) return 0; // sécurité : on commence par vérifier que collectionsData est un tableau
+
+    const typeMapping = {
+      "Mégots de cigarette": "cigarette",
+      Plastique: "plastic",
+      Verre: "glass",
+      Métal: "metal",
+      Electronique: "electronic",
+      Autre: "other",
+      Textile: "textile",
+    };
+
+    const dbType = typeMapping[type];
+    const item = collectionsData.find((entry) => entry.type === dbType);
     return item ? item.total_quantity : 0;
   };
 

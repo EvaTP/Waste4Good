@@ -52,27 +52,27 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 mt-8">
             <div className="bg-white p-4 rounded-lg shadow-md">
               <h3 className="text-lg font-semibold">Déchets collectés</h3>
-              <p className="text-xl">120 kg</p>
+              <p className="text-2xl">20 tonnes</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-md">
               <h3 className="text-lg font-semibold">Points gagnés</h3>
-              <p className="text-xl">500 pts</p>
+              <p className="text-2xl">1.000.0000 pts</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-md">
               <h3 className="text-lg font-semibold">Associations aidées</h3>
-              <p className="text-xl">15</p>
+              <p className="text-2xl">15</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-md">
               <h3 className="text-lg font-semibold">Bénévoles mobilisés</h3>
-              <p className="text-xl">30</p>
+              <p className="text-2xl">30</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-md">
               <h3 className="text-lg font-semibold">Événements réalisés</h3>
-              <p className="text-xl">10</p>
+              <p className="text-2xl">10</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-md">
-              <h3 className="text-lg font-semibold">Communautés impactées</h3>
-              <p className="text-xl">5</p>
+              <h3 className="text-lg font-semibold">Français sensibilisés</h3>
+              <p className="text-2xl">65 %</p>
             </div>
           </div>
         </div>
