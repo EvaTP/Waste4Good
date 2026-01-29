@@ -5,6 +5,7 @@
   align-items: center;
 }
 
+/* Calendrier */
 .month_navigation {
   display: flex;
   align-items: center;
@@ -18,11 +19,14 @@
   border: none;
   color: var(--text-color);
   cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 50%;
+  padding: 1rem;
+  border-radius: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.25em;
+  font-weight: 500;
   transition: background-color 0.2s;
 }
 
@@ -40,6 +44,13 @@
   font-weight: 500;
   min-width: 200px;
   text-align: center;
+}
+
+.section_title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 .waste_grid {
@@ -98,31 +109,32 @@
 }
 
 /* Badge colors */
+.badge_cigarette {
+  background-color: #c2410c;
+  color: white;
+}
 .badge_plastic {
-  background-color: #dbeafe;
-  color: #1e40af;
+  background-color: #1e40af;
+  color: white;
 }
 .badge_glass {
-  background-color: #dcfce7;
-  color: #166534;
+  background-color: green;
+  color: white;
 }
 .badge_metal {
-  background-color: #f3f4f6;
-  color: #374151;
+  background-color: #374151;
+  color: white;
 }
-.badge_paper {
-  background-color: #fef3c7;
-  color: #92400e;
+.badge_textile {
+  background-color: skyblue;
+  color: white;
 }
-.badge_organic {
-  background-color: #fed7aa;
-  color: #c2410c;
-}
+
 .badge_electronic {
   background-color: #e9d5ff;
   color: #7c2d12;
 }
 .badge_other {
   background-color: #fecaca;
-  color: #991b1b;
+  color: white;
 }

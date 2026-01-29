@@ -1,9 +1,18 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import layoutStyles from "@/app/styles/layout.module.css";
 
 export default function NavBar() {
+  const router = useRouter();
+  const handleLogout = () => {
+    // Vider le localStorage
+    localStorage.clear();
+
+    // rediriger vers la homepage
+    router.push("/");
+  };
   return (
     <header className={layoutStyles.NavBar}>
       <div className={layoutStyles.NavBar_container}>
@@ -13,9 +22,10 @@ export default function NavBar() {
             <Image
               src="/logo-W4G.png"
               alt="logo-waste4good"
-              width={75}
-              height={70}
+              width={85}
+              height={80}
               priority
+              style={{ objectFit: "contain" }}
             />
           </Link>
 
@@ -23,14 +33,15 @@ export default function NavBar() {
             <Image
               src="/title-W4G.png"
               alt="title-waste4good"
-              width={105}
-              height={100}
+              width={120}
+              height={110}
               priority
+              style={{ objectFit: "contain" }}
             />
           </Link>
 
           {/* <span className={layoutStyles.NavBar_title}>Waste4Good</span> */}
-          <p className=" text-white text-2xl mt-6">
+          <p className=" text-white text-base font-bold mt-2">
             Transformer les déchets en impact positif
           </p>
         </div>
@@ -76,6 +87,17 @@ export default function NavBar() {
             />
             <span>Mon profil</span>
           </Link>
+
+          {/* Bouton de déconnexion */}
+          <button onClick={handleLogout} className={layoutStyles.NavBar_link}>
+            <Image
+              src="/log-out-white.svg"
+              alt="icon-logout"
+              width={20}
+              height={20}
+            />
+            <span>Déconnexion</span>
+          </button>
         </nav>
       </div>
     </header>

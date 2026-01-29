@@ -51,7 +51,7 @@ export default function Dashboard() {
           `https://waste4good-back.vercel.app/dashboard/${userId}`,
         );
         const data = await response.json();
-        console.log("🦊 DASHBOARD DATA :", data);
+        console.log("🦊 DASHBOARD DATA :", data); // on voit en console tous les déchets collectés
         setCollectionsData(data);
       } catch (error) {
         console.error("Erreur fetch dashboard:", error);
@@ -65,11 +65,11 @@ export default function Dashboard() {
     if (!Array.isArray(collectionsData)) return 0; // sécurité : on commence par vérifier que collectionsData est un tableau
 
     const typeMapping = {
-      "Mégots de cigarette": "cigarette",
+      Mégots: "cigarette",
       Plastique: "plastic",
       Verre: "glass",
-      Métal: "metal",
       Electronique: "electronic",
+      Métal: "metal",
       Autre: "other",
       Textile: "textile",
     };
@@ -100,15 +100,35 @@ export default function Dashboard() {
             </h2>
             {/* calendrier */}
             <div className={styles.month_navigation}>
-              <button className={styles.month_nav_btn}>Previous</button>
+              <button className={styles.month_nav_btn}>
+                <Image
+                  src="/calendar-minus.svg"
+                  alt="calendar-previous"
+                  width={20}
+                  height={20}
+                  priority
+                />
+                Previous
+              </button>
               <span className={styles.current_month}></span>
-              <button className={styles.month_nav_btn}>Next</button>
+              <button className={styles.month_nav_btn}>
+                Next
+                <Image
+                  src="/calendar-minus.svg"
+                  alt="calendar-previous"
+                  width={20}
+                  height={20}
+                  priority
+                />
+              </button>
             </div>
             {/* collectes */}
-            <h3 className={styles.section_title}>Mes collectes récentes</h3>
+            <h3 className={styles.section_title}>Tes dernières collectes</h3>
             <div className={styles.waste_grid}>
               <div className={styles.waste_card}>
-                <div className={`${styles.waste_icon} ${styles.badge_organic}`}>
+                <div
+                  className={`${styles.waste_icon} ${styles.badge_cigarette}`}
+                >
                   <Image
                     src="/waste-cigarette.svg"
                     alt="icon-user"
@@ -179,7 +199,27 @@ export default function Dashboard() {
                 </div>
               </div>
               <div className={styles.waste_card}>
-                <div className={styles.waste_icon}>
+                <div className={`${styles.waste_icon} ${styles.badge_textile}`}>
+                  <Image
+                    src="/waste-shirt.svg"
+                    alt="icon-user"
+                    width={25}
+                    height={25}
+                    priority
+                  />
+                </div>
+                <div className={styles.waste_info}>
+                  <h3>Textile</h3>
+                  <p className={styles.waste_count}>
+                    {" "}
+                    {getQuantityByType("Textile")}
+                  </p>
+                </div>
+              </div>
+              <div className={styles.waste_card}>
+                <div
+                  className={`${styles.waste_icon} ${styles.badge_electronic}`}
+                >
                   <Image
                     src="/waste-smartphone.svg"
                     alt="icon-user"
