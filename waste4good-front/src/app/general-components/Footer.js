@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
 
         {/* 4ème div : social */}
-        <div className="flex-1 flex items-start gap-4">
+        <div className="flex-1 flex items-start p-6 gap-6">
           <Image
             src="/linkedin-white.svg"
             alt="social-linkedin-waste4good"
@@ -71,7 +71,7 @@ export default function Footer() {
         </div>
 
         {/* 5ème div : boutons */}
-        <div className="flex-1 flex flex-col mt-4 gap-8 p-8">
+        <div className="flex-1 flex flex-col mt-4 gap-8 p-12">
           <button className="bg-green-500 hover:bg-green-600 text-white py-2 px-4">
             Nous contacter
           </button>

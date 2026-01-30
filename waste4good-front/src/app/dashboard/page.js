@@ -104,8 +104,8 @@ export default function Dashboard() {
                 <Image
                   src="/calendar-minus.svg"
                   alt="calendar-previous"
-                  width={20}
-                  height={20}
+                  width={25}
+                  height={25}
                   priority
                 />
                 Previous
@@ -114,10 +114,10 @@ export default function Dashboard() {
               <button className={styles.month_nav_btn}>
                 Next
                 <Image
-                  src="/calendar-minus.svg"
-                  alt="calendar-previous"
-                  width={20}
-                  height={20}
+                  src="/calendar-plus.svg"
+                  alt="calendar-next"
+                  width={25}
+                  height={25}
                   priority
                 />
               </button>
@@ -138,10 +138,14 @@ export default function Dashboard() {
                   />
                 </div>
                 <div className={styles.waste_info}>
-                  <h3>Mégots de cigarette</h3>
-                  <p className={styles.waste_count}>
-                    {getQuantityByType("Mégots de cigarette")}
-                  </p>
+                  <div>
+                    <h3>Mégots de cigarette</h3>
+                  </div>
+                  <div>
+                    <p className={styles.waste_count}>
+                      {getQuantityByType("Mégots de cigarette")}
+                    </p>
+                  </div>
                 </div>
               </div>
               <div className={styles.waste_card}>
