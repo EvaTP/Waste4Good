@@ -57,7 +57,7 @@ export default function DonatePage() {
   return (
     <>
       {/* Banner */}
-      <div className="relative w-full h-[350px]">
+      <div className="relative w-full h-87.5">
         <Image
           src="/images/banner-page-donate.png"
           alt="Banner page donations associations"

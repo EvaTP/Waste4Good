@@ -278,15 +278,14 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
 
 /* Container : sépare gauche / droite */
 .NavBar_container {
-  max-width: 1400px;
+  /* max-width: 1400px; */
   width: 100%;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   padding: 0 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   /* flex-wrap: wrap; */
-  gap: 0.5rem;
 }
 
 /* Bloc gauche : logo + titre */
@@ -294,21 +293,22 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
   display: flex;
   align-items: center;
   gap: 1rem;
-  /* flex-shrink: 0;  Empêche le rétrécissement excessif */
+  flex-grow: 1;
 }
 
-.NavBar_title {
+/* .NavBar_title {
   font-size: 2rem;
   font-weight: 800;
   color: #1d6ea6;
-}
+} */
 
 /* Bloc droit : liens */
 .NavBar_right {
   display: flex;
-  align-items: right;
+  align-items: center;
   gap: 1.5rem;
   /* margin-left: auto; */
+  flex-shrink: 0; /* Ne rétrécit pas */
 }
 
 /* Liens de la navbar */
