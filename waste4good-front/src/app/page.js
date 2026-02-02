@@ -1,4 +1,5 @@
 import Image from "next/image";
+import MapSection from "./general-components/MapSection";
 import PartnersGrid from "@/app/general-components/PartnersGrid";
 
 export default function Home() {
@@ -78,6 +79,8 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <MapSection />
 
         <PartnersGrid />
       </main>
