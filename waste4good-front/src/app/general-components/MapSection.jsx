@@ -19,7 +19,7 @@ export default function MapSection() {
       className="w-full py-16 px-4"
       style={{ backgroundColor: "#9cc638" }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-400 mx-auto">
         {/* Titre de la section */}
         <h2 className="text-5xl font-bold text-center text-white mb-4">
           Nos actions en France
