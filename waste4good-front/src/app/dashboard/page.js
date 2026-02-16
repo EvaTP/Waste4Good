@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import layoutStyles from "../styles/layout.module.css";
 import { useState, useEffect } from "react";
+import CollectionForm from "../general-components/CollectionForm";
 
 //URL API Express = "http://localhost:3001/volunteers";
 
@@ -13,6 +14,7 @@ export default function Dashboard() {
   const [userName, setUserName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [collectionsData, setCollectionsData] = useState([]);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -98,6 +100,28 @@ export default function Dashboard() {
             <h2 className={layoutStyles.card_header}>
               Bonjour {firstName} 👋 !
             </h2>
+
+            {/* Bouton "Enregistrer une collecte"pour afficher le formulaire */}
+            <div className="flex justify-center my-4">
+              <button
+                onClick={() => setShowForm(!showForm)}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg flex items-center gap-2 transition-colors"
+              >
+                <Image
+                  src="/package-plus-white.svg"
+                  alt="Ajouter"
+                  width={30}
+                  height={30}
+                />
+                {showForm ? "Annuler" : "Enregistrer une collecte"}
+              </button>
+            </div>
+
+            {/* Affichage conditionnel du formulaire */}
+            {showForm && (
+              <CollectionForm onSuccess={() => setShowForm(false)} />
+            )}
+
             {/* calendrier */}
             <div className={styles.month_navigation}>
               <button className={styles.month_nav_btn}>

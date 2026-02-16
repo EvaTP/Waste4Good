@@ -37,9 +37,9 @@ export default function PartnersGrid() {
         </h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-          {associations.map((association) => (
+          {associations.map((association, index) => (
             <div
-              key={association.id}
+              key={association.id || `association-${index}`}
               className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:scale-105 transition-transform duration-300"
             >
               {association.imageUrl && (
