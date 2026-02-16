@@ -64,8 +64,11 @@ router.post("/", async (req, res) => {
       collection_id: collectionId,
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Erreur serveur" });
+    console.error("Erreur détaillée:", err);
+    res.status(500).json({
+      error: "Erreur serveur",
+      details: err.message,
+    });
   }
 });
 
