@@ -15,7 +15,7 @@ export default function DonatePage() {
       try {
         // const response = await fetch("http://localhost:3001/associations");
         const response = await fetch(
-          "https://waste4good-back.vercel.app/associations",
+          `${process.env.NEXT_PUBLIC_API_URL}/associations`,
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
