@@ -49,7 +49,7 @@ une vue bénévole
 ## 💙 BONUS
 
 - ✅ (Niveau 1+) Déployer son back-end en production avec Vercel
-- 🚧 (Niveau 1+) Développer l’authentification
+- ✅ (Niveau 1+) Développer l’authentification
 - 🚧 (Niveau 2) Mettre en place un middleware
 - 🚧 (Niveau 1) Intégrer des règles d’accessibilité et d’éco-conception
 - ✅ (Niveau 1) Utiliser un framework CSS tel que Tailwind
@@ -59,16 +59,11 @@ une vue bénévole
 ## 🌱 1. Vue BENEVOLE : Gestion de compte et connexion 🚧
 
 Pouvoir se connecter à l’application avec un login et password fourni par l’association
-
-- NIVEAU 1 : tous les bénévoles ont le même identifiant et mot de passe
-- NIVEAU 2 : chaque bénévole a ses propres identifiants
-- 💙 [BONUS] : Pouvoir éditer son profil
-- Modifier ses identifiants
-- Modifier son mot de passe
+✅ 💙 [BONUS] : Pouvoir éditer son profil
 
 ## 🌱 2. Vue BENEVOLE : Gestion des collectes de déchets
 
-Pouvoir enregistrer une collecte (bénévole responsable, date, lieu)
+✅ Pouvoir enregistrer une collecte (bénévole responsable, date, lieu)
 
 - Le.la bénévole responsable est la personne connectée à l’application
 - La date saisie par défaut est celle du jour. Il sera possible à l’utilisateur.trice de la modifier
@@ -83,7 +78,7 @@ Pouvoir enregistrer une collecte (bénévole responsable, date, lieu)
 - 💙 [BONUS] : Retrouver un bénévole au travers d’une recherche par nom
   Développer les fonctionnalités suivante :
   - ✅ Pouvoir ajouter / modifier / supprimer un compte bénévole
-  - 🚧 Pouvoir voir la localisation des bénévoles sur une carte
+  - ✅ Pouvoir voir la localisation des bénévoles sur une carte
 
 ## ⚙️ 4. Vue ASSOCIATION : Tableau de bord
 
