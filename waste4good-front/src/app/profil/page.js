@@ -150,7 +150,7 @@ export default function Profil() {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/volunteers/${volunteerId}`,
         {
-          method: "PUT",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
@@ -185,55 +185,7 @@ export default function Profil() {
         <div className={layoutStyles.card}>
           <h2 className={layoutStyles.card_header}>Mon profil</h2>
 
-          {/* <form
-            className={layoutStyles.form_container}
-            onSubmit={handleVolunteerProfile}
-          >
-            <div>
-              <label className={layoutStyles.form_label}>Prénom</label>
-              <input
-                placeholder="Votre prénom"
-                required
-                type="text"
-                value={firstname}
-                onChange={(e) => setFirstname(e.target.value)}
-              />
-            </div>
-            <div>
-              <label className={layoutStyles.form_label}>Nom</label>
-              <input
-                placeholder="Votre nom"
-                required
-                type="text"
-                value={lastname}
-                onChange={(e) => setLastname(e.target.value)}
-              />
-            </div>
-            <div>
-              <label className={layoutStyles.form_label}>Localisation</label>
-              <input
-                placeholder="Votre ville"
-                required
-                type="text"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-              />
-            </div>
-            <div className={layoutStyles.profil_actions}>
-              <button type="submit" className={layoutStyles.submit_btn}>
-                <Image
-                  src="/save.svg"
-                  alt="icon-save"
-                  width={30}
-                  height={30}
-                  priority
-                />
-                Mise à jour
-              </button>
-              
-            </div>
-          </form> */}
-
+          {/* FORMULAIRE */}
           <div className={layoutStyles.form_container}>
             {/* Prénom */}
             <div>
@@ -291,7 +243,7 @@ export default function Profil() {
             {/* Message de retour */}
             {message && (
               <div
-                className={`p-3 rounded-lg ${
+                className={`p-3 rounded-lg mt-1.5 mb-1.5 ${
                   message.includes("✅")
                     ? "bg-green-100 text-green-800"
                     : "bg-red-100 text-red-800"
@@ -307,7 +259,7 @@ export default function Profil() {
               className={layoutStyles.submit_btn}
             >
               <Image src="/save.svg" alt="icon-save" width={25} height={25} />
-              Mettre à jour le profil
+              Mettre à jour mon profil
             </button>
           </div>
         </div>

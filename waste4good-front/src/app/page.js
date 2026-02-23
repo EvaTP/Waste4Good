@@ -49,7 +49,7 @@ export default function Home() {
 
         <div className="mt-30 mb-20 flex flex-col items-center bg-emerald-100">
           <p className="text-3xl text-center font-bold mt-12 mb-6 max-w-4xl mx-auto">
-            Les déchets en chiffres
+            Nos actions en chiffres
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 mt-8 mb-12 px-4">

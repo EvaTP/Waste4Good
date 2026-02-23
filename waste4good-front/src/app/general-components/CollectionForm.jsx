@@ -13,13 +13,13 @@ export default function CollectionForm({ onSuccess }) {
     const fetchData = async () => {
       try {
         const citiesRes = await fetch(
-          "https://waste4good-back.vercel.app/cities",
+          `${process.env.NEXT_PUBLIC_API_URL}/cities`,
         );
         const citiesData = await citiesRes.json();
         setCities(citiesData);
 
         const wastesRes = await fetch(
-          "https://waste4good-back.vercel.app/wastes",
+          `${process.env.NEXT_PUBLIC_API_URL}/wastes`,
         );
         const wastesData = await wastesRes.json();
         setWastes(wastesData);
@@ -71,7 +71,8 @@ export default function CollectionForm({ onSuccess }) {
 
     try {
       const response = await fetch(
-        "https://waste4good-back.vercel.app/collections",
+        `${process.env.NEXT_PUBLIC_API_URL}/collections`,
+        // "https://waste4good-back.vercel.app/collections",
         // "http://localhost:3001/collections",
         {
           method: "POST",

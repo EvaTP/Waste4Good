@@ -23,13 +23,13 @@ export default function LeafletMap() {
       try {
         // récupérer les villes
         const citiesRes = await fetch(
-          "https://waste4good-back.vercel.app/cities",
+          `${process.env.NEXT_PUBLIC_API_URL}/cities`,
         );
         const cities = await citiesRes.json();
 
         // récupérer les bénévoles
         const volunteersRes = await fetch(
-          "https://waste4good-back.vercel.app/volunteers",
+          `${process.env.NEXT_PUBLIC_API_URL}/volunteers`,
         );
         const volunteers = await volunteersRes.json();
 

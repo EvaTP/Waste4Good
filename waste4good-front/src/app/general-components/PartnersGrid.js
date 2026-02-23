@@ -11,7 +11,7 @@ export default function PartnersGrid() {
     async function fetchAssociations() {
       try {
         const response = await fetch(
-          "https://waste4good-back.vercel.app/associations",
+          `${process.env.NEXT_PUBLIC_API_URL}/associations`,
         );
         const data = await response.json();
         setAssociations(data.slice(0, 8)); // on limite à 8 partenaires

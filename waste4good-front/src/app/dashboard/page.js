@@ -20,7 +20,7 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          "https://waste4good-back.vercel.app/volunteers",
+          `${process.env.NEXT_PUBLIC_API_URL}/volunteers`,
         );
         const data = await res.json();
         setData(data);
@@ -50,7 +50,7 @@ export default function Dashboard() {
 
       try {
         const response = await fetch(
-          `https://waste4good-back.vercel.app/dashboard/${userId}`,
+          `${process.env.NEXT_PUBLIC_API_URL}/dashboard/${userId}`,
         );
         const data = await response.json();
         console.log("🦊 DASHBOARD DATA :", data); // on voit en console tous les déchets collectés
