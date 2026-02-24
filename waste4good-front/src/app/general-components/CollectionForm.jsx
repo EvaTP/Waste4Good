@@ -1,9 +1,19 @@
 "use client";
 import { useState, useEffect } from "react";
 
+// Retourne la date du jour au format YYYY-MM-DD (compatible input type="date")
+function getTodayDate() {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
+}
+
 export default function CollectionForm({ onSuccess }) {
   const [cities, setCities] = useState([]);
   const [wastes, setWastes] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(getTodayDate());
   const [selectedCity, setSelectedCity] = useState("");
   const [quantities, setQuantities] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,7 +59,11 @@ export default function CollectionForm({ onSuccess }) {
       setIsSubmitting(false);
       return;
     }
-
+    if (!selectedDate) {
+      setMessage("Veuillez sélectionner une date");
+      setIsSubmitting(false);
+      return;
+    }
     if (!selectedCity) {
       setMessage("Veuillez sélectionner une ville");
       setIsSubmitting(false);
@@ -81,6 +95,7 @@ export default function CollectionForm({ onSuccess }) {
           },
           body: JSON.stringify({
             volunteer_id: parseInt(volunteerId),
+            date: selectedDate,
             city_id: parseInt(selectedCity),
             waste_items: waste_items,
           }),
@@ -89,6 +104,7 @@ export default function CollectionForm({ onSuccess }) {
 
       if (response.ok) {
         setMessage("✅ Collecte enregistrée avec succès !");
+        setSelectedDate(getTodayDate());
         setSelectedCity("");
         setQuantities({});
 
@@ -112,6 +128,19 @@ export default function CollectionForm({ onSuccess }) {
       <h3 className="text-2xl font-semibold mb-4">Enregistrer une collecte</h3>
 
       <div className="space-y-4">
+        {/* Champ DATE */}
+        <div>
+          <label className="block font-medium mb-2">Date de collecte *</label>
+          <input
+            type="date"
+            value={selectedDate}
+            max={getTodayDate()}
+            onChange={(e) => setSelectedDate(e.target.value)}
+            classNmae="w-full p-3 border border-gray-300 rounded-lg"
+          />
+        </div>
+
+        {/* Champ VILLE */}
         <div>
           <label className="block font-medium mb-2">Ville de collecte *</label>
           <select
@@ -128,6 +157,7 @@ export default function CollectionForm({ onSuccess }) {
           </select>
         </div>
 
+        {/* Champ DECHETS */}
         <div>
           <label className="block font-medium mb-2">Déchets collectés</label>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -36,11 +36,11 @@ export default function PartnersGrid() {
           Nos partenaires
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10">
           {associations.map((association, index) => (
             <div
               key={association.id || `association-${index}`}
-              className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:scale-105 transition-transform duration-300"
+              className="bg-white rounded-xl shadow-md p-12 flex flex-col items-center text-center hover:scale-105 transition-transform duration-300"
             >
               {association.imageUrl && (
                 <Image
