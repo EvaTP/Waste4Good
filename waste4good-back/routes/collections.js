@@ -58,15 +58,20 @@ router.post("/", async (req, res) => {
       // de récuperer/visualiser les données dans une table
     );
     const collectionId = collectionResult.rows[0].id;
-    console.log("Collection créée avec id :", collectionId); // 👈
+    console.log("👩🏼‍🦰 Collection créée avec id :", collectionId); // 👈
 
     // insérer chaque déchet collecté
     for (const item of waste_items) {
       console.log("Insertion is_collected :", item); // 👈 vérifier chaque item
-      await pool.query(
-        "INSERT INTO is_collected (collection_id, waste_id, quantity, collected_at) VALUES ($1, $2, $3, $4)",
-        [collectionId, item.waste_id, item.quantity, collectionDate],
-      );
+      try {
+        await pool.query(
+          "INSERT INTO is_collected (collection_id, waste_id, quantity, collected_at) VALUES ($1, $2, $3, $4)",
+          [collectionId, item.waste_id, item.quantity, collectionDate],
+        );
+        console.log("✅ INSERT réussi pour waste_id :", item.waste_id);
+      } catch (insertErr) {
+        console.error("❌ Erreur INSERT is_collected :", insertErr.message);
+      }
     }
     res.status(201).json({
       message: "Collecte enregistrée !",
