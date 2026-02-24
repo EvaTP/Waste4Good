@@ -92,3 +92,37 @@ WHERE id = 3;
 -- EXEMPLE delete collections
 DELETE FROM collections
 WHERE id = 1;
+
+-- voir le classement des bénévoles par nombre de collectes réalisées en utilisant une jointure entre volunteers et collections, et en groupant par le nom du bénévole
+SELECT 
+    v.firstname || ' ' || v.lastname AS volunteer,
+    COUNT(c.id) AS total_collections
+FROM volunteers v
+LEFT JOIN collections c ON v.id = c.volunteer_id
+GROUP BY v.id
+ORDER BY total_collections DESC;
+
+
+-- voir le classement des bénévoles par nombre de collectes réalisées en utilisant JOIN et non left join, pour afficher seulement les bénévoles ayant effectué au moins une collecte, et en groupant par le nom du bénévole
+SELECT 
+  v.firstname || ' ' || v.lastname as volunteer,
+  COUNT(*) as nombre_collectes
+FROM collections c
+JOIN volunteers v ON c.volunteer_id = v.id
+GROUP BY v.id, v.firstname, v.lastname
+ORDER BY nombre_collectes DESC;
+
+
+-- voir le classement des bénévoles par quantité totale de déchets collectés,
+-- en utilisant une jointure entre volunteers, collections, is_collected et wastes,
+-- et en groupant par le nom du bénévole et le type de déchet
+SELECT 
+    v.firstname || ' ' || v.lastname AS volunteer,
+    w.value AS type_dechet,
+    SUM(ic.quantity) AS total_quantite
+FROM volunteers v
+JOIN collections c ON v.id = c.volunteer_id
+JOIN is_collected ic ON c.id = ic.collection_id
+JOIN wastes w ON ic.waste_id = w.id
+GROUP BY v.id, v.firstname, v.lastname, w.value
+ORDER BY volunteer, total_quantite DESC;

@@ -35,28 +35,31 @@ router.get("/:id", async (req, res) => {
 
 // POST : création d'une nouvelle collecte en l'assignant à un bénévole
 router.post("/", async (req, res) => {
-  const { volunteer_id, city_id, waste_items } = req.body;
-  // vérifier que les données sont présentes
+  const { volunteer_id, city_id, date, waste_items } = req.body;
+  // vérifier que les données obligatoires sont présentes
   if (!volunteer_id || !city_id || !waste_items) {
     return res
       .status(400)
       .json({ error: "volunteer_id, city_id et waste_items requis" });
   }
+  // Si aucune date de saisie, on utilise la date du jour
+  const collectionDate = date ? new Date(date) : new Date();
+
   try {
     // Créer la collecte et l'associer au bénévole
     const collectionResult = await pool.query(
-      "INSERT INTO collections (volunteer_id, city_id, created_at) VALUES ($1, $2, NOW()) RETURNING *",
-      [volunteer_id, city_id],
+      "INSERT INTO collections (volunteer_id, city_id, created_at) VALUES ($1, $2, $3) RETURNING *",
+      [volunteer_id, city_id, collectionDate],
       // $1, $2 sont des valeurs qui protègent des injections SQL : cyberattack -> insertion de code infecté qui permet
       // de récuperer/visualiser les données dans une table
     );
     const collectionId = collectionResult.rows[0].id;
 
-    // insérer chaquqe déchet collecté
+    // insérer chaque déchet collecté
     for (const item of waste_items) {
       await pool.query(
-        "INSERT INTO is_collected (collection_id, waste_id, quantity, collected_at) VALUES ($1, $2, $3, NOW())",
-        [collectionId, item.waste_id, item.quantity],
+        "INSERT INTO is_collected (collection_id, waste_id, quantity, collected_at) VALUES ($1, $2, $3, $4)",
+        [collectionId, item.waste_id, item.quantity, collectionDate],
       );
     }
     res.status(201).json({
