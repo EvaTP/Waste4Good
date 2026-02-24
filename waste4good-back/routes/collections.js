@@ -36,6 +36,10 @@ router.get("/:id", async (req, res) => {
 // POST : création d'une nouvelle collecte en l'assignant à un bénévole
 router.post("/", async (req, res) => {
   const { volunteer_id, city_id, date, waste_items } = req.body;
+
+  console.log("🗂️ Body reçu :", req.body); // 👈 vérifier ce qui arrive du front
+  console.log("🚮 waste_items :", waste_items); // 👈 vérifier que ce n'est pas vide/undefined
+
   // vérifier que les données obligatoires sont présentes
   if (!volunteer_id || !city_id || !waste_items) {
     return res
@@ -54,9 +58,11 @@ router.post("/", async (req, res) => {
       // de récuperer/visualiser les données dans une table
     );
     const collectionId = collectionResult.rows[0].id;
+    console.log("Collection créée avec id :", collectionId); // 👈
 
     // insérer chaque déchet collecté
     for (const item of waste_items) {
+      console.log("Insertion is_collected :", item); // 👈 vérifier chaque item
       await pool.query(
         "INSERT INTO is_collected (collection_id, waste_id, quantity, collected_at) VALUES ($1, $2, $3, $4)",
         [collectionId, item.waste_id, item.quantity, collectionDate],
