@@ -1,11 +1,25 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import styles from "./page.module.css";
 import layoutStyles from "../styles/layout.module.css";
 import { useState, useEffect } from "react";
 import CollectionForm from "../general-components/CollectionForm";
 
+const MOIS_FR = [
+  "Janvier",
+  "Février",
+  "Mars",
+  "Avril",
+  "Mai",
+  "Juin",
+  "Juillet",
+  "Août",
+  "Septembre",
+  "Octobre",
+  "Novembre",
+  "Décembre",
+];
 //URL API Express = "http://localhost:3001/volunteers";
 
 export default function Dashboard() {
@@ -15,6 +29,27 @@ export default function Dashboard() {
   const [firstName, setFirstName] = useState("");
   const [collectionsData, setCollectionsData] = useState([]);
   const [showForm, setShowForm] = useState(false);
+
+  // *********** navigation mois précédent/suivant ******************
+  const today = new Date();
+  const [month, setMonth] = useState(today.getMonth()); // 0-11
+  const [year, setYear] = useState(today.getFullYear());
+
+  const prevMonth = () => {
+    if (month === 0) {
+      setMonth(11);
+      setYear((y) => y - 1);
+    } else setMonth((m) => m - 1);
+  };
+
+  const nextMonth = () => {
+    if (month === 11) {
+      setMonth(0);
+      setYear((y) => y + 1);
+    } else setMonth((m) => m + 1);
+  };
+
+  // ***************************************************************
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,7 +77,7 @@ export default function Dashboard() {
     }
   }, []);
 
-  // Récupérer les données de collecte
+  // Récupérer les données de collecte (se relance à chaque changement de mois ou d'année)
   useEffect(() => {
     const fetchDashboardData = async () => {
       const userId = localStorage.getItem("userId");
@@ -50,7 +85,7 @@ export default function Dashboard() {
 
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/dashboard/${userId}`,
+          `${process.env.NEXT_PUBLIC_API_URL}/dashboard/${userId}?month=${month + 1}&year=${year}`,
         );
         const data = await response.json();
         console.log("🦊 DASHBOARD DATA :", data); // on voit en console tous les déchets collectés
@@ -60,7 +95,7 @@ export default function Dashboard() {
       }
     };
     fetchDashboardData();
-  }, []);
+  }, [month, year]);
 
   // retrouver la quantité de déchets collectés par type
   const getQuantityByType = (type) => {
@@ -91,7 +126,7 @@ export default function Dashboard() {
 
   return (
     <div className="app_container">
-      <p className="text-3xl font-semibold text-left ml-8 mt-6 mb-4">
+      <p className="text-3xl font-semibold text-left ml-14 mt-10 mb-4">
         Dashboard de : {userName}
       </p>
       <div className={layoutStyles.main_content}>
@@ -101,7 +136,34 @@ export default function Dashboard() {
               Bonjour {firstName} 👋 !
             </h2>
 
-            {/* Bouton "Enregistrer une collecte"pour afficher le formulaire */}
+            {/* navigateur de mois */}
+            <div className={styles.month_navigation}>
+              <button className={styles.month_nav_btn} onClick={prevMonth}>
+                <Image
+                  src="/calendar-minus.svg"
+                  alt="calendar-previous"
+                  width={25}
+                  height={25}
+                  priority
+                />
+                Précédent
+              </button>
+              <span className={styles.current_month}>
+                {MOIS_FR[month]} {year}
+              </span>
+              <button className={styles.month_nav_btn} onClick={nextMonth}>
+                Suivant
+                <Image
+                  src="/calendar-plus.svg"
+                  alt="calendar-next"
+                  width={25}
+                  height={25}
+                  priority
+                />
+              </button>
+            </div>
+
+            {/* Bouton "Enregistrer une collecte" pour afficher le formulaire */}
             <div className="flex justify-center my-4">
               <button
                 onClick={() => setShowForm(!showForm)}
@@ -123,7 +185,7 @@ export default function Dashboard() {
             )}
 
             {/* calendrier */}
-            <div className={styles.month_navigation}>
+            {/* <div className={styles.month_navigation}>
               <button className={styles.month_nav_btn}>
                 <Image
                   src="/calendar-minus.svg"
@@ -145,9 +207,12 @@ export default function Dashboard() {
                   priority
                 />
               </button>
-            </div>
-            {/* collectes */}
-            <h3 className={styles.section_title}>Tes dernières collectes</h3>
+            </div> */}
+
+            {/* collectes par mois */}
+            <h3 className={styles.section_title}>
+              Déchets collectés en {MOIS_FR[month]} {year}
+            </h3>
             <div className={styles.waste_grid}>
               <div className={styles.waste_card}>
                 <div
