@@ -4,14 +4,14 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import layoutStyles from "../styles/layout.module.css";
 import ItemVolunteer from "./components/itemVolunteer";
+import NavBarMngt from "../general-components/NavBarMngt";
 import { useState, useEffect } from "react";
-
-//URL API Express = "http://localhost:3001/volunteers";
 
 export default function VolunteersMgt() {
   const [data, setData] = useState(null);
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
+  const [searchName, setSearchName] = useState("");
   const [isLoading, setLoading] = useState(true);
   // AJOUTER UN BENEVOLE (formulaire modale)
   const [showModal, setShowModal] = useState(false);
@@ -25,19 +25,12 @@ export default function VolunteersMgt() {
   const [editVolunteerId, setEditVolunteerId] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
 
-  // useEffect(async () => {
-  //   fetch("http://localhost:3001/volunteers")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setData(data);
-  //       setLoading(false);
-  //     });
-  // }, []);
+  const API = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3001/volunteers");
+        const res = await fetch(`${API}/volunteers`);
         const data = await res.json();
         setData(data);
       } catch (error) {
@@ -52,7 +45,7 @@ export default function VolunteersMgt() {
   useEffect(() => {
     const fetchCities = async () => {
       try {
-        const res = await fetch("http://localhost:3001/cities");
+        const res = await fetch(`${API}/cities`);
         const data = await res.json();
         setCities(data);
       } catch (error) {
@@ -76,9 +69,20 @@ export default function VolunteersMgt() {
   if (!data) return <p>No profile data</p>;
 
   // On filtre les bénévoles selon la ville sélectionnée
-  const filteredVolunteers = selectedCity
-    ? data.filter((volunteer) => volunteer.location === selectedCity)
-    : data;
+  // const filteredVolunteers = selectedCity
+  //   ? data.filter((volunteer) => volunteer.location === selectedCity)
+  //   : data;
+
+  // Filtrage par ville ET par nom/prénom
+  const filteredVolunteers = data.filter((volunteer) => {
+    const matchCity = selectedCity ? volunteer.location === selectedCity : true;
+    const matchName = searchName
+      ? `${volunteer.firstname} ${volunteer.lastname}`
+          .toLowerCase()
+          .includes(searchName.toLowerCase())
+      : true;
+    return matchCity && matchName;
+  });
 
   // soumission du formulaire (modale) "ajouter un bénévole"
   const handleSubmitVolunteer = async (e) => {
@@ -91,8 +95,8 @@ export default function VolunteersMgt() {
 
     const method = isEditing ? "PATCH" : "POST";
     const url = isEditing
-      ? `http://localhost:3001/volunteers/${editVolunteerId}`
-      : "http://localhost:3001/volunteers";
+      ? `${API}/volunteers/${editVolunteerId}`
+      : `${API}/volunteers`;
 
     try {
       const res = await fetch(url, {
@@ -103,9 +107,9 @@ export default function VolunteersMgt() {
         body: JSON.stringify(volunteerData),
       });
 
-      console.log("Requête:", method, url);
-      console.log("Données envoyées :", volunteerData);
-      console.log("Statut réponse:", res.status);
+      console.log("➡️ Requête:", method, url);
+      console.log("💿 Données envoyées :", volunteerData);
+      console.log("🙏 Statut réponse:", res.status);
 
       if (!res.ok) {
         throw new Error("Erreur lors de l'enregistrement du bénévole");
@@ -127,7 +131,7 @@ export default function VolunteersMgt() {
       );
 
       // Re-fetch des bénévoles pour mettre à jour la liste
-      const refreshed = await fetch("http://localhost:3001/volunteers");
+      const refreshed = await fetch(`${API}/volunteers`);
       setData(await refreshed.json());
     } catch (error) {
       console.error(error);
@@ -153,12 +157,9 @@ export default function VolunteersMgt() {
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(
-        `http://localhost:3001/volunteers/${volunteer.id}`,
-        {
-          method: "DELETE",
-        },
-      );
+      const res = await fetch(`${API}/volunteers/${volunteer.id}`, {
+        method: "DELETE",
+      });
 
       if (!res.ok) throw new Error("Erreur serveur");
 
@@ -172,50 +173,7 @@ export default function VolunteersMgt() {
 
   return (
     <div className="app_container">
-      <header className={layoutStyles.header}>
-        <div className={layoutStyles.header_content}>
-          <p className={layoutStyles.header_title}>
-            <Image
-              src="/recycle.svg"
-              alt="icon-edit"
-              width={30}
-              height={30}
-              priority
-            />
-            Waste4Good
-          </p>
-        </div>
-        <p className={layoutStyles.header_subtitle}>
-          Agir pour un environnement plus propre
-        </p>
-      </header>
-
-      <div>
-        <nav className={layoutStyles.NavBar}>
-          <div className={layoutStyles.NavBar_container}>
-            <Link href="/manage-users" className={layoutStyles.NavBar_link}>
-              <Image
-                src="/sprout.svg"
-                alt="icon-leaf"
-                width={25}
-                height={25}
-                priority
-              />
-              <span>Gestion des bénévoles</span>
-            </Link>
-            <Link href="/leaderboard" className={layoutStyles.NavBar_link}>
-              <Image
-                src="/trophy.svg"
-                alt="icon-trophy"
-                width={25}
-                height={25}
-                priority
-              />
-              <span>Leaderboard</span>
-            </Link>
-          </div>
-        </nav>
-      </div>
+      <NavBarMngt />
 
       {successMessage && (
         <div className={layoutStyles.success_message}>{successMessage}</div>
@@ -237,14 +195,19 @@ export default function VolunteersMgt() {
               />
               Ajouter un.e bénévole
             </button>
+
             <div className={styles.search_filters}>
+              {/* Recherche par nom */}
               <div className={styles.search_container}>
                 <input
                   placeholder="Rechercher un.e bénévole"
                   className={styles.search_input}
                   type="text"
+                  value={searchName}
+                  onChange={(e) => setSearchName(e.target.value)}
                 />
               </div>
+              {/* Filtre par ville */}
               <div className={styles.location_filter}>
                 <select
                   className={styles.search_input}
@@ -272,11 +235,14 @@ export default function VolunteersMgt() {
           </div>
         </div>
       </main>
-      {/* MODALE */}
+
+      {/* MODALE : ajout / modification */}
       {showModal && (
         <div className={layoutStyles.modal_overlay}>
           <div className={layoutStyles.modal}>
-            <h3>Ajouter un.e bénévole</h3>
+            <h3>
+              {isEditing ? "Modifier le bénévole" : "Ajouter un.e bénévole"}
+            </h3>
             <form
               className={layoutStyles.form_container}
               onSubmit={handleSubmitVolunteer}
@@ -347,12 +313,6 @@ export default function VolunteersMgt() {
           </div>
         </div>
       )}
-
-      <footer>
-        <p className={layoutStyles.info_text}>
-          🌱 Merci d'agir pour la planète. Vous faites partie du changement.
-        </p>
-      </footer>
     </div>
   );
 }
