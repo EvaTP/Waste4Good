@@ -103,14 +103,26 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
   border-radius: 5px;
   font-size: 2em;
   color: white;
-  padding: 0.75rem;
+  padding: 1rem;
   text-align: center;
-  animation: fadeOut 3s ease-in-out forwards;
+  animation: fadeOut 4s ease-in-out forwards;
   opacity: 1;
 }
 .success_icon {
   display: inline;
   margin-right: 0.5rem;
+}
+
+/* Error message */
+.error_message {
+  background-color: #ef4444;
+  border-radius: 5px;
+  font-size: 2em;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  animation: fadeOut 4s ease-in-out forwards;
+  opacity: 1;
 }
 
 /* Waste type buttons */

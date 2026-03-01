@@ -11,11 +11,7 @@ export default function ItemVolunteer({ volunteer, onEdit, onDelete }) {
         <h3 className={styles.volunteer_info_name}>
           {volunteer.firstname} {volunteer.lastname}
         </h3>
-        <p className={styles.volunteer_info_p}>{volunteer.location}</p>
-        <p className={styles.volunteer_info_p}>
-          {volunteer.total_collections} collecte
-          {volunteer.total_collections > 1 ? "s" : ""}
-        </p>
+        <p className={styles.volunteer_info_p}>{volunteer.city_name}</p>
       </div>
 
       <div className={styles.volunteer_actions}>

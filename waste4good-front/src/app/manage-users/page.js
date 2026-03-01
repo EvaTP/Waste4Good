@@ -15,7 +15,7 @@ export default function VolunteersMgt() {
   const [isLoading, setLoading] = useState(true);
   // AJOUTER UN BENEVOLE (formulaire modale)
   const [showModal, setShowModal] = useState(false);
-  const [firstname, setFirstname] = useState("");
+  const [firstName, setfirstName] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,6 +26,11 @@ export default function VolunteersMgt() {
   const [successMessage, setSuccessMessage] = useState("");
 
   const API = process.env.NEXT_PUBLIC_API_URL;
+
+  useEffect(() => {
+    const storedfirstName = localStorage.getItem("firstName");
+    if (storedfirstName) setfirstName(storedfirstName);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,7 +82,7 @@ export default function VolunteersMgt() {
   const filteredVolunteers = data.filter((volunteer) => {
     const matchCity = selectedCity ? volunteer.location === selectedCity : true;
     const matchName = searchName
-      ? `${volunteer.firstname} ${volunteer.lastname}`
+      ? `${volunteer.firstName} ${volunteer.lastname}`
           .toLowerCase()
           .includes(searchName.toLowerCase())
       : true;
@@ -88,7 +93,7 @@ export default function VolunteersMgt() {
   const handleSubmitVolunteer = async (e) => {
     e.preventDefault();
 
-    let volunteerData = { firstname, lastname, email, location };
+    let volunteerData = { firstName, lastname, email, location };
     if (!isEditing) {
       volunteerData.password = password;
     } // ajoute password que si on n'est PAS en édition
@@ -116,7 +121,7 @@ export default function VolunteersMgt() {
       }
 
       // Réinitialise les champs et masque la modale après soumission
-      setFirstname("");
+      setfirstName("");
       setLastname("");
       setEmail("");
       setPassword("");
@@ -139,7 +144,7 @@ export default function VolunteersMgt() {
     }
   };
   const handleEdit = (volunteer) => {
-    setFirstname(volunteer.firstname);
+    setfirstName(volunteer.firstName);
     setLastname(volunteer.lastname);
     setEmail(volunteer.email);
     setPassword("");
@@ -152,7 +157,7 @@ export default function VolunteersMgt() {
   // SUPPRIMER
   const handleDelete = async (volunteer) => {
     const confirmDelete = confirm(
-      `Supprimer ${volunteer.firstname} ${volunteer.lastname} ?`,
+      `Supprimer ${volunteer.firstName} ${volunteer.lastname} ?`,
     );
     if (!confirmDelete) return;
 
@@ -178,6 +183,9 @@ export default function VolunteersMgt() {
       {successMessage && (
         <div className={layoutStyles.success_message}>{successMessage}</div>
       )}
+      <div className="mt-14">
+        <h2 className={layoutStyles.card_header}>Bonjour {firstName} 👋 !</h2>
+      </div>
 
       <main className={layoutStyles.main_content}>
         <div className={layoutStyles.card}>
@@ -252,8 +260,8 @@ export default function VolunteersMgt() {
                 <input
                   required
                   type="text"
-                  value={firstname}
-                  onChange={(e) => setFirstname(e.target.value)}
+                  value={firstName}
+                  onChange={(e) => setfirstName(e.target.value)}
                 />
               </div>
               <div>

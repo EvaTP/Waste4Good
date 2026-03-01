@@ -17,39 +17,6 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // Fonction pour récupérer l'utilisateur en dur (Julien)
-  // const fetchHardcodedUser = async () => {
-  //   setLoading(true);
-  //   setError('');
-  //   setSuccess('');
-
-  //   try {
-  //     const res = await fetch("http://localhost:3001/connexion", {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({}) // Corps vide car données en dur côté serveur
-  //     });
-
-  //     if (res.ok) {
-  //       const userData = await res.json();
-  //       setData(userData);
-  //       setSuccess(<span className={layoutStyles.success_message}>Bonjour Julien ! 😃</span>);
-  //       router.push('/dashboard');
-
-  //     } else {
-  //       const errorData = await res.json();
-  //       setError(errorData.message || 'Erreur lors de la récupération');
-  //     }
-  //   } catch (error) {
-  //     console.error("Erreur lors du fetch :", error);
-  //     setError('Erreur de connexion au serveur');
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   // Fonction pour gérer la connexion avec le formulaire
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -86,7 +53,11 @@ export default function LoginPage() {
         setSuccess("✔︎ Connexion réussie !");
 
         setTimeout(() => {
-          router.push("/dashboard");
+          if (userData.user.role === "admin") {
+            router.push("/manage-users");
+          } else {
+            router.push("/dashboard");
+          }
         }, 1500);
       } else {
         const errorData = await res.json();
@@ -109,21 +80,6 @@ export default function LoginPage() {
 
   return (
     <div className={styles.app_container}>
-      {/* <header className={styles.header}>
-        <div className={styles.header_content}>
-          <div className={styles.header_title}>
-            <Image
-              src="/log-in.svg"
-              alt="Recycle"
-              className={styles.logo}
-              width={40}
-              height={40}
-            />
-            Connexion
-          </div>
-        </div>
-      </header> */}
-
       <main className={styles.main_content}>
         <div className={styles.card}>
           <div className={styles.card_header}>Connexion</div>
