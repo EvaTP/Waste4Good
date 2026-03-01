@@ -8,10 +8,11 @@ router.use(express.json()); // nécessaire pour les POST car on solicite le body
 router.get("/", async (req, res) => {
   try {
     const result = await pool.query(
-      `SELECT v.*, COUNT(c.id) AS total_collections
+      `SELECT v.*, c.name AS city_name, COUNT(col.id) AS total_collections
       FROM volunteers v
-      LEFT JOIN collections c ON c.volunteer_id = v.id
-      GROUP BY v.id
+      LEFT JOIN cities c ON v.location = c.id
+      LEFT JOIN collections col ON col.volunteer_id = v.id
+      GROUP BY v.id, c.name
       ORDER BY v.lastname ASC`,
     );
     res.json(result.rows);
