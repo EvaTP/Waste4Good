@@ -14,7 +14,9 @@ export default function VolunteersLeaderboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3001/leaderboard");
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/leaderboard`,
+        );
         const data = await res.json();
         setData(data);
       } catch (error) {
