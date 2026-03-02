@@ -31,9 +31,6 @@ export default function Footer() {
           <Link href="/about" className="hover:underline">
             À propos
           </Link>
-          <Link href="/contact" className="hover:underline">
-            Contact
-          </Link>
           <Link href="/donate" className="hover:underline">
             Faire un don
           </Link>
@@ -71,11 +68,11 @@ export default function Footer() {
         </div>
 
         {/* 5ème div : boutons */}
-        <div className="flex-1 flex flex-col mt-4 gap-8 p-12">
-          <button className="bg-green-500 hover:bg-green-600 text-white py-2 px-4">
+        <div className="flex-1 flex flex-col items-center mt-4 gap-8 px-6">
+          <button className="bg-emerald-600 hover:bg-emerald-700 text-white text-lg py-3 w-full md:w-48 transition-colors duration-200">
             Nous contacter
           </button>
-          <button className="bg-green-500 hover:bg-green-600 text-white py-2 px-4">
+          <button className="bg-emerald-600 hover:bg-emerald-700 text-white text-lg py-3 w-full md:w-48 transition-colors duration-200">
             Newsletter
           </button>
         </div>
@@ -83,7 +80,7 @@ export default function Footer() {
 
       {/* 6ème div : texte info pleine largeur */}
       <div
-        className={`${layoutStyles.info_text} mt-6 w-full text-center text-4xl md:text-base`}
+        className={`${layoutStyles.info_text} mt-6 w-full text-center text-lg md:text-xl`}
       >
         🌱 Merci d'agir pour la planète. Vous faites partie du changement.
       </div>

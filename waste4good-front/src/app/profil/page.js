@@ -21,9 +21,9 @@ export default function Profil() {
   const [cities, setCities] = useState([]);
 
   // useEffect(() => {
-  //   // récupérer le bénévole connecté depuis localStorage
+  //   // récupérer le bénévole connecté depuis
   //   // si pas connecté, redirection vers la page connexion
-  //   const storedUser = localStorage.getItem("loggedInVolunteer");
+  //   const storedUser = .getItem("loggedInVolunteer");
   //   //   if(!storedUser){
   //   // 	window.location.href= "/connexion";
   //   // 	return;
@@ -84,17 +84,17 @@ export default function Profil() {
   //   }
   // };
 
-  // // bouton de déconnexion (supprime le localstorage et redirige vers la page connexion)
+  // // bouton de déconnexion (supprime le  et redirige vers la page connexion)
   // const handleLogout = () => {
-  //   localStorage.removeItem("connectedVolunteerId");
+  //   .removeItem("connectedVolunteerId");
   //   window.location.href = "/connexion";
   // };
 
   useEffect(() => {
-    // Récupérer les infos depuis localStorage
-    const userId = localStorage.getItem("userId");
-    const userName = localStorage.getItem("userName");
-    const userEmail = localStorage.getItem("userEmail");
+    // Récupérer les infos depuis
+    const userId = sessionStorage.getItem("userId");
+    const userName = sessionStorage.getItem("userName");
+    const userEmail = sessionStorage.getItem("userEmail");
 
     // Si pas connecté, rediriger vers connexion
     if (!userId) {
@@ -164,9 +164,9 @@ export default function Profil() {
       );
 
       if (response.ok) {
-        // Mettre à jour le localStorage
-        localStorage.setItem("userName", `${firstname} ${lastname}`);
-        localStorage.setItem("userEmail", email);
+        // Mettre à jour le sessionStorage
+        sessionStorage.setItem("userName", `${firstname} ${lastname}`);
+        sessionStorage.setItem("userEmail", email);
         setMessage("✅ Profil mis à jour avec succès !");
       } else {
         setMessage("❌ Erreur lors de la mise à jour.");

@@ -52,7 +52,7 @@ export default function CollectionForm({ onSuccess }) {
     setIsSubmitting(true);
     setMessage("");
 
-    const volunteerId = localStorage.getItem("userId");
+    const volunteerId = sessionStorage.getItem("userId");
 
     if (!volunteerId) {
       setMessage("Erreur : utilisateur non connecté");

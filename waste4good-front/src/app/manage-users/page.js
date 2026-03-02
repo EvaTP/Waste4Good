@@ -28,7 +28,7 @@ export default function VolunteersMgt() {
   const API = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
-    const storedfirstName = localStorage.getItem("firstName");
+    const storedfirstName = sessionStorage.getItem("firstName");
     if (storedfirstName) setfirstName(storedfirstName);
   }, []);
 

@@ -70,7 +70,7 @@ export default function Dashboard() {
 
   // Récupérer le nom complet et le prénom
   useEffect(() => {
-    const storedUserName = localStorage.getItem("userName");
+    const storedUserName = sessionStorage.getItem("userName");
     if (storedUserName) {
       setUserName(storedUserName);
       setFirstName(storedUserName.split(" ")[0]);
@@ -80,7 +80,7 @@ export default function Dashboard() {
   // Récupérer les données de collecte (se relance à chaque changement de mois ou d'année)
   useEffect(() => {
     const fetchDashboardData = async () => {
-      const userId = localStorage.getItem("userId");
+      const userId = sessionStorage.getItem("userId");
       if (!userId) return;
 
       try {

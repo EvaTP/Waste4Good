@@ -25,7 +25,7 @@ export default function LoginPage() {
     setSuccess("");
 
     try {
-      const res = await fetch("https://waste4good-back.vercel.app/connexion", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/connexion`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,15 +40,17 @@ export default function LoginPage() {
         const userData = await res.json();
 
         // Stocker le token et les infos essentielles
-        localStorage.setItem("token", userData.token);
-        localStorage.setItem("userId", userData.user.id);
-        localStorage.setItem("userRole", userData.user.role);
+        sessionStorage.setItem("token", userData.token);
+        sessionStorage.setItem("userId", userData.user.id);
+        sessionStorage.setItem("userRole", userData.user.role);
         // firstname et username pas indispensables mais servent à afficher un message de bienvenue personnalisé
-        localStorage.setItem("firstName", userData.user.firstname);
-        localStorage.setItem(
+        sessionStorage.setItem("firstName", userData.user.firstname);
+        sessionStorage.setItem(
           "userName",
           `${userData.user.firstname} ${userData.user.lastname}`,
         );
+
+        window.dispatchEvent(new Event("storage"));
 
         setSuccess("✔︎ Connexion réussie !");
 
@@ -83,19 +85,6 @@ export default function LoginPage() {
       <main className={styles.main_content}>
         <div className={styles.card}>
           <div className={styles.card_header}>Connexion</div>
-
-          {/* Bouton pour récupérer l'utilisateur en dur
-          <div className={styles.test_section}>
-            <button 
-              type="button" 
-              onClick={fetchHardcodedUser} 
-              className={styles.test_btn}
-              disabled={isLoading}
-            >
-              <Image src="/log-in.svg" alt="Connexion" className={styles.logo} width={20} height={20} />
-              {isLoading ? 'Chargement...' : 'Récupérer utilisateur Julien'}
-            </button>
-          </div> */}
 
           {/* Formulaire de connexion */}
           <form onSubmit={handleLogin} className={styles.form_container}>
