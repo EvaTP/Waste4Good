@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
+//import Link from "next/link";
 import styles from "./page.module.css";
 import layoutStyles from "../styles/layout.module.css";
 import ItemVolunteer from "./components/itemVolunteer";
@@ -80,9 +80,11 @@ export default function VolunteersMgt() {
 
   // Filtrage par ville ET par nom/prénom
   const filteredVolunteers = data.filter((volunteer) => {
-    const matchCity = selectedCity ? volunteer.location === selectedCity : true;
+    const matchCity = selectedCity
+      ? volunteer.city_name === selectedCity
+      : true;
     const matchName = searchName
-      ? `${volunteer.firstName} ${volunteer.lastname}`
+      ? `${volunteer.firstname} ${volunteer.lastname}`
           .toLowerCase()
           .includes(searchName.toLowerCase())
       : true;
@@ -93,7 +95,7 @@ export default function VolunteersMgt() {
   const handleSubmitVolunteer = async (e) => {
     e.preventDefault();
 
-    let volunteerData = { firstName, lastname, email, location };
+    let volunteerData = { firstname: firstName, lastname, email, location };
     if (!isEditing) {
       volunteerData.password = password;
     } // ajoute password que si on n'est PAS en édition
@@ -144,7 +146,7 @@ export default function VolunteersMgt() {
     }
   };
   const handleEdit = (volunteer) => {
-    setfirstName(volunteer.firstName);
+    setfirstName(volunteer.firstname);
     setLastname(volunteer.lastname);
     setEmail(volunteer.email);
     setPassword("");
@@ -157,7 +159,7 @@ export default function VolunteersMgt() {
   // SUPPRIMER
   const handleDelete = async (volunteer) => {
     const confirmDelete = confirm(
-      `Supprimer ${volunteer.firstName} ${volunteer.lastname} ?`,
+      `Supprimer ${volunteer.firstname} ${volunteer.lastname} ?`,
     );
     if (!confirmDelete) return;
 
