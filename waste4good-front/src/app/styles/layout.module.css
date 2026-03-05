@@ -523,6 +523,7 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
 
 .modal_actions {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
 }
@@ -536,6 +537,10 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
 
 .modal_actions .submit-btn {
   flex: 1;
+}
+.modal_actions .submit_btn,
+.modal_actions .cancel_btn {
+  margin: 0;
 }
 
 /* ******************** */

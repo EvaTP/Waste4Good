@@ -300,12 +300,25 @@ export default function VolunteersMgt() {
               )}
               <div>
                 <label className={layoutStyles.form_label}>Localisation</label>
-                <input
+                <select
+                  required
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                >
+                  <option value="">Choisir une ville</option>
+                  {cities.map((city) => (
+                    <option key={city.id} value={city.id}>
+                      {city.name}
+                    </option>
+                  ))}
+                </select>
+
+                {/* <input
                   required
                   type="text"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                />
+                /> */}
               </div>
               <div className={layoutStyles.modal_actions}>
                 <button type="submit" className={layoutStyles.submit_btn}>
