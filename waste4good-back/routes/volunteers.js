@@ -1,6 +1,6 @@
 const express = require("express");
 const pool = require("../db");
-
+const bcrypt = require("bcrypt");
 const router = express.Router();
 router.use(express.json()); // nécessaire pour les POST car on solicite le body JSON
 
@@ -44,12 +44,13 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   const { firstname, lastname, email, password, location } = req.body;
   try {
+    const hashedPassword = await bcrypt.hash(password, 10); // Hash du mot de passe avec un salt de 10 rounds pour sécuriser le stockage en base de données
     const result = await pool.query(
       `INSERT INTO volunteers 
         (firstname, lastname, email, password, location, created_at)
        VALUES ($1, $2, $3, $4, $5, NOW())
        RETURNING *`,
-      [firstname, lastname, email, password, location],
+      [firstname, lastname, email, hashedPassword, location],
     );
 
     res.status(201).json(result.rows[0]);
