@@ -74,11 +74,6 @@ export default function VolunteersMgt() {
   if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>No profile data</p>;
 
-  // On filtre les bénévoles selon la ville sélectionnée
-  // const filteredVolunteers = selectedCity
-  //   ? data.filter((volunteer) => volunteer.location === selectedCity)
-  //   : data;
-
   // Filtrage par ville ET par nom/prénom
   const filteredVolunteers = data.filter((volunteer) => {
     const matchCity = selectedCity
@@ -96,7 +91,7 @@ export default function VolunteersMgt() {
   const handleSubmitVolunteer = async (e) => {
     e.preventDefault();
 
-    let volunteerData = { firstname: firstName, lastname, email, location };
+    let volunteerData = { firstname, lastname, email, location };
     if (!isEditing) {
       volunteerData.password = password;
     } // ajoute password que si on n'est PAS en édition
@@ -124,7 +119,7 @@ export default function VolunteersMgt() {
       }
 
       // Réinitialise les champs et masque la modale après soumission
-      setfirstName("");
+      setFirstname("");
       setLastname("");
       setEmail("");
       setPassword("");
@@ -147,7 +142,7 @@ export default function VolunteersMgt() {
     }
   };
   const handleEdit = (volunteer) => {
-    setfirstName(volunteer.firstname);
+    setFirstname(volunteer.firstname);
     setLastname(volunteer.lastname);
     setEmail(volunteer.email);
     setPassword("");
@@ -266,8 +261,8 @@ export default function VolunteersMgt() {
                 <input
                   required
                   type="text"
-                  value={firstName}
-                  onChange={(e) => setfirstName(e.target.value)}
+                  value={firstname}
+                  onChange={(e) => setFirstname(e.target.value)}
                 />
               </div>
               <div>
