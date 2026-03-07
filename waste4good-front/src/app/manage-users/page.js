@@ -15,7 +15,8 @@ export default function VolunteersMgt() {
   const [isLoading, setLoading] = useState(true);
   // AJOUTER UN BENEVOLE (formulaire modale)
   const [showModal, setShowModal] = useState(false);
-  const [firstName, setfirstName] = useState("");
+  const [adminName, setAdminName] = useState("");
+  const [firstname, setFirstname] = useState(""); // POUR LE FORMULAIRE attention à la casse : "firstname" et pas "firstName" car c'est comme ça que le backend attend les données
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +30,7 @@ export default function VolunteersMgt() {
 
   useEffect(() => {
     const storedfirstName = sessionStorage.getItem("firstName");
-    if (storedfirstName) setfirstName(storedfirstName);
+    if (storedfirstName) setAdminName(storedfirstName);
   }, []);
 
   useEffect(() => {
@@ -172,6 +173,9 @@ export default function VolunteersMgt() {
 
       // mise à jour locale
       setData((prev) => prev.filter((v) => v.id !== volunteer.id));
+      setSuccessMessage(
+        `✅ ${volunteer.firstname} ${volunteer.lastname} supprimé avec succès.`,
+      );
     } catch (err) {
       console.error(err);
       alert("Erreur lors de la suppression");
@@ -186,7 +190,7 @@ export default function VolunteersMgt() {
         <div className={layoutStyles.success_message}>{successMessage}</div>
       )}
       <div className="mt-14">
-        <h2 className={layoutStyles.card_header}>Bonjour {firstName} 👋 !</h2>
+        <h2 className={layoutStyles.card_header}>Bonjour {adminName} 👋 !</h2>
       </div>
 
       <main className={layoutStyles.main_content}>
