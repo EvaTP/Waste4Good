@@ -69,26 +69,10 @@ export default function DonatePage() {
     }
   }, [successMessage, errorMessage]);
 
-  if (loading) {
-    return (
-      <div className={layoutStyles.container}>
-        {" "}
-        <h1 className={styles.title}>Chargement des associations...</h1>
-        <p>Merci de patienter.</p>
-      </div>
-    );
-  }
-  if (error) {
-    return (
-      <div className={layoutStyles.container}>
-        <h1 className={styles.title}>Erreur</h1>
-        <p className={styles.errorMessage}>{error}</p>
-      </div>
-    );
-  }
-
   // ── Effectuer un don ──────────────────────────────────────────────────────
   const handleDonate = async (association) => {
+    console.log("association reçue :", association); // ← ajoute ceci
+    console.log("association.id :", association.id);
     const userId = sessionStorage.getItem("userId");
     if (!userId) return;
 
@@ -146,6 +130,8 @@ export default function DonatePage() {
       </div>
     );
   }
+
+  // ─────────────────────────────────────────────────────────────────────────
 
   return (
     <>
