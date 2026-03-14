@@ -9,7 +9,13 @@ export default function DonatePage() {
   const [associations, setAssociations] = useState([]); // État pour stocker les associations
   const [loading, setLoading] = useState(true); // État pour indiquer si les données sont en cours de chargement
   const [error, setError] = useState(null); // État pour gérer les erreurs
+  const [points, setPoints] = useState(null); // points disponibles
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
+  const API = process.env.NEXT_PUBLIC_API_URL;
+
+  // fetch des associations
   useEffect(() => {
     async function fetchAssociations() {
       try {
@@ -35,10 +41,97 @@ export default function DonatePage() {
     fetchAssociations();
   }, []); // Le tableau vide signifie que cet effet ne s'exécute qu'une seule fois après le premier rendu
 
+  // fetch des points disponibles
+  useEffect(() => {
+    const fetchPoints = async () => {
+      const userId = sessionStorage.getItem("userId");
+      console.log("userId :", userId);
+      if (!userId) return;
+      try {
+        const res = await fetch(`${API}/donations/points/${userId}`);
+        const data = await res.json();
+        setPoints(data);
+      } catch (e) {
+        console.error("Erreur fetch points :", e);
+      }
+    };
+    fetchPoints();
+  }, []);
+
+  // Disparition automatique des messages après 4 secondes
+  useEffect(() => {
+    if (successMessage || errorMessage) {
+      const timer = setTimeout(() => {
+        setSuccessMessage("");
+        setErrorMessage("");
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [successMessage, errorMessage]);
+
   if (loading) {
     return (
       <div className={layoutStyles.container}>
         {" "}
+        <h1 className={styles.title}>Chargement des associations...</h1>
+        <p>Merci de patienter.</p>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className={layoutStyles.container}>
+        <h1 className={styles.title}>Erreur</h1>
+        <p className={styles.errorMessage}>{error}</p>
+      </div>
+    );
+  }
+
+  // ── Effectuer un don ──────────────────────────────────────────────────────
+  const handleDonate = async (association) => {
+    const userId = sessionStorage.getItem("userId");
+    if (!userId) return;
+
+    const confirmDon = confirm(
+      `Confirmer le don de ${association.points} points à ${association.name} ?`,
+    );
+    if (!confirmDon) return;
+
+    try {
+      const res = await fetch(`${API}/donations`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          volunteer_id: parseInt(userId),
+          association_id: association.id,
+          donated_points: association.points,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMessage(`❌ ${data.error}`);
+        return;
+      }
+
+      // Mise à jour des points après le don
+      const updatedPoints = await fetch(`${API}/donations/points/${userId}`);
+      setPoints(await updatedPoints.json());
+
+      setSuccessMessage(
+        `✅ Don de ${association.points} pts à ${association.name} effectué !`,
+      );
+    } catch (e) {
+      console.error("Erreur donation :", e);
+      setErrorMessage("❌ Une erreur est survenue. Veuillez réessayer.");
+    }
+  };
+  // ─────────────────────────────────────────────────────────────────────────
+
+  if (loading) {
+    return (
+      <div className={layoutStyles.container}>
         <h1 className={styles.title}>Chargement des associations...</h1>
         <p>Merci de patienter.</p>
       </div>
@@ -70,20 +163,42 @@ export default function DonatePage() {
       <div className={layoutStyles.container}>
         <h6 className={styles.pageTitle}>Faire un Don</h6>{" "}
         <h3 className="text-center text-4xl mb-8">
-          Faites un don à l'association de votre choix
+          Faites un don à l&apos;association de votre choix
         </h3>
+        {/* Messages de succès / erreur */}
+        {successMessage && (
+          <div className={layoutStyles.success_message}>{successMessage}</div>
+        )}
+        {errorMessage && (
+          <div className={layoutStyles.error_message}>{errorMessage}</div>
+        )}
+        {/* ── Bloc points disponibles ── */}
+        {points !== null && (
+          <div className="flex flex-col items-center gap-1 bg-emerald-50 border border-emerald-200 rounded-xl px-6 py-4 mb-8">
+            <p className="text-sm text-emerald-700 font-semibold uppercase tracking-wide">
+              Mes points disponibles
+            </p>
+            <p className="text-4xl font-bold text-emerald-600">
+              🌱 {points.available_points} pts
+            </p>
+            <p className="text-xs text-gray-500">
+              {points.total_earned} pts gagnés · {points.total_spent} pts
+              dépensés
+            </p>
+          </div>
+        )}
         {/* Grid pour les cartes d'associations */}
         <div className={styles.associationsGrid}>
           {associations.length > 0 ? (
             associations.map((association) => (
               <div key={association.id} className={styles.associationCard}>
-                {/* Vérifiez si votre objet association a une propriété imageUrl */}
+                {/* Vérifiez si l'objet association a une propriété imageUrl */}
                 {association.imageUrl && (
                   <Image
                     src={association.imageUrl}
                     alt={association.name}
-                    width={300} // Adaptez la largeur et la hauteur
-                    height={200} // en fonction de votre design
+                    width={300} // Adapter la largeur et la hauteur
+                    height={200}
                     className={styles.associationImage}
                   />
                 )}
@@ -91,21 +206,44 @@ export default function DonatePage() {
                 <p className={styles.associationDescription}>
                   {association.description}
                 </p>
-                {/* Vous pouvez ajouter un lien vers une page de don spécifique pour l'association */}
-                <Link
-                  href={`/donate/${association.id}`}
-                  className={styles.donateButton}
-                >
-                  Faire un don
-                </Link>
+
+                {/* Coût du don en points et équivalent euros */}
+
+                <div className="flex items-center justify-between mt-3">
+                  <p className="text-sm font-semibold text-emerald-600">
+                    {association.points} pts →{" "}
+                    {association.points_conversion_euro}€
+                  </p>
+                  <button
+                    onClick={() => handleDonate(association)}
+                    disabled={
+                      points === null ||
+                      points.available_points < association.points
+                    }
+                    className={`px-4 py-2 rounded-lg font-semibold text-white transition-colors
+                      ${
+                        points !== null &&
+                        points.available_points >= association.points
+                          ? "bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
+                          : "bg-gray-300 cursor-not-allowed"
+                      }`}
+                  >
+                    {points !== null &&
+                    points.available_points >= association.points
+                      ? "💚 Faire un don"
+                      : "Points insuffisants"}
+                  </button>
+                </div>
               </div>
             ))
           ) : (
             <p>Aucune association disponible pour le moment.</p>
           )}
         </div>
-        <div className={layoutStyles.info_text}>
-          <p className={layoutStyles.info_text}>🙏 Merci pour vos dons.</p>
+        <div>
+          <p className="text-center text-2xl font-bold text-gray-500 mt-8">
+            🙏 Merci pour vos dons
+          </p>
         </div>
       </div>
     </>

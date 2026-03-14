@@ -32,16 +32,15 @@ app.use((req, res, next) => {
 });
 
 app.use("/volunteers", volunteersRoutes);
-app.use("/volunteers/:id", volunteersRoutes);
 app.use("/associations", associationsRoutes);
 app.use("/cities", citiesRoutes);
 app.use("/wastes", wastesRoutes);
 app.use("/collections", collectionsRoutes);
 app.use("/leaderboard", leaderboardRoutes);
-app.use("/", connexionRoute);
 app.use("/is_collected", is_collectedRoute);
 app.use("/donations", donationsRoute);
 app.use("/dashboard", dashboardRoute);
+app.use("/", connexionRoute);
 
 // pour lancer le serveur
 app.listen(port_backend, () => {

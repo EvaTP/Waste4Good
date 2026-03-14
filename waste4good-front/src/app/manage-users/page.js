@@ -127,15 +127,17 @@ export default function VolunteersMgt() {
       setShowModal(false);
       setIsEditing(false);
       setEditVolunteerId(null);
+
+      // Re-fetch des bénévoles pour mettre à jour la liste
+      const refreshed = await fetch(`${API}/volunteers`);
+      setData(await refreshed.json());
+
+      // on met le success message après le re-fetch, sinon le re-rendu peut faire disparaître le message trop vite
       setSuccessMessage(
         isEditing
           ? "✅ Bénévole modifié avec succès."
           : "✅ Bénévole ajouté avec succès.",
       );
-
-      // Re-fetch des bénévoles pour mettre à jour la liste
-      const refreshed = await fetch(`${API}/volunteers`);
-      setData(await refreshed.json());
     } catch (error) {
       console.error(error);
       alert("Impossible de sauvegarder le bénévole.");
