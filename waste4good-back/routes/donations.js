@@ -50,6 +50,25 @@ router.get("/points/:userId", async (req, res) => {
   }
 });
 
+// GET : historique des dons d'un bénévole (pour affichage dans le dashboard du bénévole)
+router.get("/history/:userId", async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const result = await pool.query(
+      `SELECT d.donated_points, d.donation_date, a.name AS association_name
+       FROM donations d
+       JOIN associations a ON d.association_id = a.id
+       WHERE d.volunteer_id = $1
+       ORDER BY d.donation_date DESC`,
+      [userId],
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error("Erreur historique dons :", err);
+    res.status(500).json({ error: "Erreur serveur" });
+  }
+});
+
 // POST : effectuer un don
 // Vérifie que le bénévole a assez de points avant d'enregistrer
 router.post("/", async (req, res) => {
