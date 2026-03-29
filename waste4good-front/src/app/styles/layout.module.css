@@ -550,7 +550,7 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
 /* Responsive design */
 @media (min-width: 768px) {
   .main_content {
-    max-width: 60rem;
+    /* max-width: 60rem; */
     margin: 0 auto;
   }
 
@@ -561,8 +561,8 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
 
 @media (min-width: 1024px) {
   .main_content {
-    flex-direction: row;
-    padding: 2rem;
+    flex-direction: column;
+    padding: 2rem 4rem;
     gap: 2rem;
   }
 

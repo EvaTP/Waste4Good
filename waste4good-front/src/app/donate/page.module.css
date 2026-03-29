@@ -41,8 +41,9 @@
   gap: 30px; /* Espacement entre les cartes */
   max-width: 1200px; /* Largeur maximale de la grille */
   margin: 0 auto 80px auto; /* Centre la grille et ajoute de l'espace en dessous */
-  padding: 0 20px; /* Padding sur les côtés pour les petits écrans */
-  background-color: tomato; /* Juste pour visualiser la grille */
+  padding: 0 40px; /* Padding sur les côtés pour les petits écrans */
+  margin-top: 20px;
+  /*background-color: tomato;  Juste pour visualiser la grille */
 }
 
 /* Styles pour chaque carte d'association */

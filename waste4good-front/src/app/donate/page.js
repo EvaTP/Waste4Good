@@ -135,15 +135,28 @@ export default function DonatePage() {
 
   return (
     <>
-      {/* Banner */}
-      <div className="relative w-full h-87.5">
+      {/* Banner avec H1 superposé */}
+      <div className="relative w-full" style={{ height: "500px" }}>
         <Image
           src="/images/banner-page-donate.png"
           alt="Banner page donations associations"
           fill
-          className="object-contain"
+          className="object-cover"
           priority
         />
+
+        {/* Overlay sombre */}
+        <div className="absolute inset-0 bg-black/30 z-0" />
+
+        {/* Overlay avec texte */}
+        <div
+          className="absolute bottom-0 left-0 right-0 z-10 px-8 py-6"
+          style={{ backgroundColor: "rgba(29, 110, 166, 0.85)" }}
+        >
+          <h1 className="text-white text-4xl font-bold text-center">
+            Transformez vos collectes en dons
+          </h1>
+        </div>
       </div>
 
       <div className={layoutStyles.container}>
