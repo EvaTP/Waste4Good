@@ -1,12 +1,12 @@
 ![Badge pour Git](W4G-badge.svg)
 
-### PROJET WASTE4GOOD
+### ♻️ PROJET WASTE4GOOD
 
-### Ce projet a été repris de l'ancien projet école "Adaction".
+**Ce projet a été repris de l'ancien projet école "Adaction".**
 
 # 🎯 Objectifs
 
-WASTE4GOOD est une association qui sensibilise aux ramassages des déchets sauvages (mégots de cigarette, plastiques d’emballages, etc).
+**WASTE4GOOD** est une association qui sensibilise aux ramassages des déchets sauvages (mégots de cigarette, plastiques d’emballages, etc).
 L’objectif est de développer une application avec :
 
 une vue association qui permet :
@@ -50,7 +50,7 @@ une vue bénévole qui permet :
 
 - Voir la localisation des bénévoles sur une carte
 
-## 🌱 Vue BENEVOLE
+## 🌱 Vue BÉNÉVOLE
 
 ### Gestion de compte et de connexion
 
