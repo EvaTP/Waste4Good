@@ -8,6 +8,7 @@ router.get("/", async (req, res) => {
     const results = await pool.query(`
       SELECT 
         v.firstname,
+        v.lastname,
         SUM(ic.quantity) AS total_collections,
         COALESCE(SUM(d.donated_points), 0) AS total_donated_points,
         COALESCE(
@@ -19,7 +20,7 @@ router.get("/", async (req, res) => {
       JOIN volunteers v ON v.id = c.volunteer_id
       LEFT JOIN donations d ON d.volunteer_id = v.id
       LEFT JOIN associations a ON a.id = d.association_id
-      GROUP BY v.id, v.firstname
+      GROUP BY v.id, v.firstname, v.lastname
       ORDER BY total_collections DESC
     `);
     res.json(results.rows);

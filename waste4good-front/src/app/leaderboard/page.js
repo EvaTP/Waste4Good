@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import styles from "./page.module.css";
 import layoutStyles from "../styles/layout.module.css";
 import ItemLeaderboard from "./components/itemLeaderboard";
@@ -18,6 +18,8 @@ export default function VolunteersLeaderboard() {
           `${process.env.NEXT_PUBLIC_API_URL}/leaderboard`,
         );
         const data = await res.json();
+
+        console.log("🐰 Données reçues du backend :", data);
         setData(data);
       } catch (error) {
         console.error("Erreur lors du fetch :", error);

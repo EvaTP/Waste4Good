@@ -68,8 +68,9 @@
 .leaderboard_container {
   display: flex;
   flex-direction: column;
+  width: 80%;
+  margin: 1.5rem auto;
   gap: 0.75rem;
-  margin-top: 1rem;
 }
 
 .leaderboard_item {
@@ -80,7 +81,9 @@
   background-color: white;
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .leaderboard_item:hover {
