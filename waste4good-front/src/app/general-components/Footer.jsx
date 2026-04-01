@@ -30,7 +30,8 @@ export default function Footer() {
         {/* 2ème div : liens utiles */}
         <div className={layoutStyles.Footer_section}>
           <h4>Liens utiles</h4>
-          <Link href="/about">À propos</Link>
+          <Link href="/asso">À propos</Link>
+          <Link href="/partners">Nos partenaires</Link>
           <Link href="/donate">Faire un don</Link>
         </div>
 
