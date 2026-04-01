@@ -73,7 +73,7 @@ export default function AssociationsPage() {
       {/* ── Banner ── */}
       <div className="relative w-full" style={{ height: "400px" }}>
         <Image
-          src="/images/banner-page-asso.png"
+          src="/images/banner-page-partenaires.png"
           alt="Nos associations partenaires"
           fill
           className="object-cover"
