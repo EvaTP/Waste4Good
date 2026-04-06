@@ -21,9 +21,9 @@ export default function Home() {
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 text-center">
           <h1 className="text-white text-6xl font-bold">Nous connaître</h1>
 
-          <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 transition-colors duration-300">
+          {/* <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 transition-colors duration-300">
             Nous rejoindre
-          </button>
+          </button> */}
         </div>
       </div>
 

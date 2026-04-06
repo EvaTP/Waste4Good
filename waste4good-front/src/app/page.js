@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import MapSection from "./general-components/MapSection";
 import PartnersGrid from "@/app/general-components/PartnersGrid";
 
@@ -24,9 +25,16 @@ export default function Home() {
             Bienvenue sur Waste4Good
           </h1>
 
-          <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 transition-colors duration-300">
+          {/* <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 transition-colors duration-300">
             Nous rejoindre
-          </button>
+          </button> */}
+
+          <Link
+            href="/asso"
+            className="footer_btn bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 transition-colors duration-300"
+          >
+            Nous rejoindre
+          </Link>
         </div>
       </div>
 

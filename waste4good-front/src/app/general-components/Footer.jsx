@@ -64,8 +64,13 @@ export default function Footer() {
 
         {/* 5ème div : boutons */}
         <div className={layoutStyles.Footer_section}>
-          <button className={layoutStyles.footer_btn}>Nous contacter</button>
-          <button className={layoutStyles.footer_btn}>Newsletter</button>
+          <Link href="/asso" className={layoutStyles.footer_btn}>
+            Nous contacter
+          </Link>
+          <Link href="/newsletter" className={layoutStyles.footer_btn}>
+            Newsletter
+          </Link>
+          {/* <button className={layoutStyles.footer_btn}>Newsletter</button> */}
         </div>
       </div>
 

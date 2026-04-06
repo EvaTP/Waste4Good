@@ -45,7 +45,7 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
 }
 /* Paragraphes et liens */
 .Footer_section p,
-.Footer_section a {
+.Footer_section a:not(.footer_btn) {
   /* font-size: 0.875rem; */
   font-size: 1rem;
   margin-bottom: 0.25rem;
@@ -76,7 +76,7 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
   background-color: #059669;
   font-size: 1rem;
   font-weight: 600;
-  padding: 1rem;
+  padding: 0.5rem 1.5rem;
   width: 70%;
   max-width: 12rem;
   border: none;
@@ -84,11 +84,22 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
   transition: background-color 0.2s;
   display: block;
   margin: 0.75rem auto;
+  text-align: center;
+  text-decoration: none;
+}
+/* applique à tous les liens avec la classe footer_btn */
+a.footer_btn,
+a.footer_btn:hover,
+a.footer_btn:focus,
+a.footer_btn:active {
+  text-decoration: none;
+  color: white;
 }
 
 /* Hover */
 .footer_btn:hover {
   background-color: #047857;
+  text-decoration: none;
 }
 
 .info_text {
@@ -638,7 +649,6 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
     flex-direction: column;
     gap: 4px;
     font-size: 0.75rem;
-    padding: 0.25rem;
   }
   .NavBar_title {
     font-size: 1.2rem;
@@ -667,5 +677,6 @@ Unlike in globals.css, the classes defined in layout.module.css are locally scop
     width: 80%;
     font-size: 0.875rem;
     padding: 0.4rem 0.8rem;
+    text-decoration: none;
   }
 }
